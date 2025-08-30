@@ -1,0 +1,125 @@
+/* HomePage Animations */
+@keyframes smoothBounceInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-400px);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(15px);
+  }
+  85% {
+    transform: translateX(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes smoothBounceInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(400px);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(-15px);
+  }
+  85% {
+    transform: translateX(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes colorFade {
+  0% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  25% {
+    opacity: 0.4;
+    filter: brightness(0.6);
+  }
+  50% {
+    opacity: 0.6;
+    filter: brightness(0.8);
+  }
+  75% {
+    opacity: 0.8;
+    filter: brightness(0.9);
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* SkillsPage Animations */
+@keyframes slideUpStagger {
+  from { 
+    opacity: 0; 
+    transform: translateY(50px) scale(0.9); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
+
+@keyframes slideInSkill {
+  from { 
+    opacity: 0; 
+    transform: translateX(-20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+/* AboutPage Animations */
+@keyframes slideInLeft {
+  from { 
+    opacity: 0; 
+    transform: translateX(-100px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+@keyframes slideInRight {
+  from { 
+    opacity: 0; 
+    transform: translateX(100px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+@keyframes rotateBorder {
+  from { 
+    transform: rotate(0deg); 
+  }
+  to { 
+    transform: rotate(360deg); 
+  }
+}
