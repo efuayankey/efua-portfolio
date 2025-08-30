@@ -40,8 +40,8 @@ const ContactPage = ({ isDark, setShowContactForm }) => {
             {
               icon: Instagram,
               title: 'Instagram',
-              value: '@efuayankey',
-              href: 'https://instagram.com/efuayankey'
+              value: '@efua.yankey',
+              href: 'https://instagram.com/efua.yankey'
             }
           ].map((item, index) => {
             const Icon = item.icon;
