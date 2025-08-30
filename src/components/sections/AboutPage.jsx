@@ -23,12 +23,16 @@ const AboutPage = ({ isDark }) => {
               }}></div>
               
               {/* Photo */}
-              <div className={`relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full flex items-center justify-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold m-2 ${
+              <div className={`relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden m-2 shadow-2xl transition-transform duration-500 hover:scale-105 ${
                 isDark 
-                  ? 'bg-gradient-to-br from-cyan-500 to-blue-600 text-white'
-                  : 'bg-gradient-to-br from-blue-500 to-purple-600 text-white'
-              } shadow-2xl transition-transform duration-500 hover:scale-105`}>
-                EY
+                  ? 'ring-4 ring-cyan-500/50'
+                  : 'ring-4 ring-blue-500/50'
+              }`}>
+                <img 
+                  src="/efua-photo.png" 
+                  alt="Efua Yankey"
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                />
               </div>
               
               {/* Floating elements */}
