@@ -31,7 +31,7 @@ const ResumePage = ({ isDark }) => {
               // For now, we'll create a placeholder action
               // In a real implementation, this would download the actual resume
               const link = document.createElement('a');
-              link.href = '#'; // Replace with actual resume URL
+              link.href = 'https://docs.google.com/document/d/1KMC_66sOiqt390Hv1AKY3mAlnCYfbdV8KTr_0nGYHaU/edit?usp=sharing'; // Replace with actual resume URL
               link.download = 'Efua_Yankey_Resume.pdf';
               document.body.appendChild(link);
               link.click();
@@ -50,7 +50,7 @@ const ResumePage = ({ isDark }) => {
           </button>
 
           <div className={`text-sm ${isDark ? 'text-slate-400' : 'text-gray-500'}`}>
-            PDF • Updated December 2024
+            PDF • Updated August 2025
           </div>
         </div>
       </div>
