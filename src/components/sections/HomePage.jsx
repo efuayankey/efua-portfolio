@@ -34,7 +34,7 @@ const HomePage = ({ isDark, scrollToSection }) => {
       <div className="relative z-10 h-full flex flex-col justify-center px-4 sm:px-6 lg:px-8">
         <div className="select-none overflow-hidden flex items-center justify-center w-full" style={{height: '55vh', width: '100vw'}}>
           <div className="flex justify-center items-center w-full">
-            {['E', 'F', 'U', 'A', 'Y', 'A', 'N', 'K', 'E', 'Y'].map((letter, index) => (
+            {['E', 'F', 'U', 'A', '.', 'Y', 'A', 'N', 'K', 'E', 'Y'].map((letter, index) => (
               <div
                 key={`letter-${index}`}
                 className={`font-thin leading-none ${
