@@ -34,7 +34,7 @@ const HomePage = ({ isDark, scrollToSection }) => {
       <div className="relative z-10 h-full flex flex-col justify-center px-4 sm:px-6 lg:px-8">
         <div className="select-none overflow-hidden flex items-center justify-center w-full" style={{height: '55vh', width: '100vw'}}>
           <div className="flex justify-center items-center w-full">
-            {['E', 'F', 'U', 'A', '.', 'Y', 'A', 'N', 'K', 'E', 'Y'].map((letter, index) => (
+            {['E', 'F', 'U', 'A', ' ', 'Y', 'A', 'N', 'K', 'E', 'Y'].map((letter, index) => (
               <div
                 key={`letter-${index}`}
                 className={`font-thin leading-none ${
@@ -44,17 +44,18 @@ const HomePage = ({ isDark, scrollToSection }) => {
                   fontFamily: "'Inter', system-ui, sans-serif",
                   fontWeight: '100',
                   fontSize: 'clamp(1.5rem, 8vw, 20rem)',
-                  letterSpacing: '-0.15em',
+                  letterSpacing: index === 4 ? '0' : '-0.15em', // No letter spacing for the space
                   lineHeight: '0.8',
                   animation: `smoothBounceIn${index % 2 === 0 ? 'Left' : 'Right'} 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards, colorFade 2s ease-in-out forwards`,
                   animationDelay: `${index * 0.3}s, ${index * 0.3 + 0.5}s`,
                   opacity: 0,
                   transform: index % 2 === 0 ? 'translateX(-400px)' : 'translateX(400px)',
                   textRendering: 'optimizeLegibility',
-                  WebkitFontSmoothing: 'antialiased'
+                  WebkitFontSmoothing: 'antialiased',
+                  width: index === 4 ? 'clamp(0.5rem, 2vw, 4rem)' : 'auto' // Add space width
                 }}
               >
-                {letter}
+                {letter === ' ' ? '\u00A0' : letter}
               </div>
             ))}
           </div>
