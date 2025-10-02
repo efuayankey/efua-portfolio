@@ -58,7 +58,7 @@ export const projects = [
     tech: ['Python', 'OpenCV', 'MediaPipe', 'Scikit-learn', 'React'],
     metrics: ['82% classification accuracy', '40% reduction in decision time', '90% user satisfaction'],
     iconName: 'Eye',
-    image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=600&fit=crop&crop=center',
+    image: 'https://blog.eyeconic.com/dam/jcr:4c179e82-7490-44ad-89e1-b41a1a13d184',
     github: 'https://github.com/efuayankey',
     featured: false
   },
