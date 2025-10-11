@@ -84,6 +84,27 @@ export const projects = [
     featured: false
   },
   {
+    id: 'smarthome',
+    title: 'Smart Home System',
+    subtitle: 'End-to-end IoT system with predictive analytics',
+    category: 'Embedded Systems',
+    year: '2024',
+    rating: '93%',
+    status: 'Production',
+    description: 'Real-time embedded system orchestrating gas, temperature, motion, and light sensors with optimized MSP430 firmware and cloud-based predictive analytics.',
+    fullDescription: 'I built this because I wanted to push the boundaries of what a microcontroller can handle while keeping power consumption minimal. The challenge was creating a system that processes multiple sensor streams in real-time, makes intelligent decisions locally, and seamlessly communicates with the cloud - all while running on battery power for months.',
+    problemStatement: 'Most IoT systems either sacrifice real-time processing for power efficiency or burn through batteries with heavy computation. Additionally, sensor data often exists in silos without intelligent coordination, missing critical safety patterns that emerge from multi-modal analysis.',
+    solutionApproach: 'I architected a multi-threaded embedded system that fuses sensor data locally using custom algorithms, then selectively transmits insights to the cloud. The MSP430 handles real-time safety decisions while offloading pattern recognition and predictive analytics to ThingSpeak, creating a hybrid edge-cloud intelligence system.',
+    technicalImplementation: 'Wrote optimized C firmware leveraging the MSP430\'s ultra-low-power modes and DMA controllers, achieving 15% power reduction through intelligent interrupt management and sensor duty cycling. Implemented a real-time sensor fusion algorithm that processes 4 data streams simultaneously, detecting anomalies within 100ms. Built custom communication protocols for reliable cloud sync and created machine learning pipelines in ThingSpeak that analyze months of sensor data to predict maintenance needs.',
+    keyLearnings: 'This project taught me that the magic happens at the hardware-software boundary. I learned to think like the processor - every instruction cycle matters when you\'re building battery-powered systems. The biggest breakthrough was realizing that intelligent edge processing isn\'t about replacing the cloud, it\'s about creating the perfect partnership between local responsiveness and global intelligence.',
+    tech: ['MSP430', 'C/C#', 'ThingSpeak', 'Code Composer Studio', 'IoT Analytics'],
+    metrics: ['15% power consumption reduction', '20% processing speed improvement', '10% energy cost savings'],
+    iconName: 'Home',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop&crop=center',
+    github: 'https://github.com/efuayankey',
+    featured: false
+  },
+  {
     id: 'nsmq',
     title: 'NSMQ Recruit',
     subtitle: 'Academic competition recruitment platform',
