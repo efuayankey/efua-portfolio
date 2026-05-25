@@ -27,6 +27,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: 'Efua Yankey',
   description: 'CS + AI Researcher at Lehigh University. Building intelligent systems.',
+  icons: { icon: '/efua.png', apple: '/efua.png' },
   openGraph: {
     title: 'Efua Yankey',
     description: 'CS + AI Researcher · Lehigh University · Class of 2028',
