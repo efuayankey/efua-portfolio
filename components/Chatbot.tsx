@@ -19,9 +19,10 @@ const S = {
 interface ChatbotProps {
   open: boolean;
   onClose: () => void;
+  onOpen: () => void;
 }
 
-export default function Chatbot({ open, onClose }: ChatbotProps) {
+export default function Chatbot({ open, onClose, onOpen }: ChatbotProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput]       = useState('');
   const [loading, setLoading]   = useState(false);
@@ -71,7 +72,7 @@ export default function Chatbot({ open, onClose }: ChatbotProps) {
     <>
       {/* Floating bubble — always visible */}
       <button
-        onClick={open ? onClose : () => {}}
+        onClick={open ? onClose : onOpen}
         style={{
           position: 'fixed', bottom: 24, right: 24, zIndex: 700,
           width: 48, height: 48, borderRadius: '50%',

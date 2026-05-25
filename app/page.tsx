@@ -8,6 +8,7 @@ import Graph from '@/components/Graph';
 import Tooltip, { TooltipState } from '@/components/Tooltip';
 import Panel from '@/components/Panel';
 import Chatbot from '@/components/Chatbot';
+import AIMascot from '@/components/AIMascot';
 export default function Home() {
   const [bootDone,   setBootDone]   = useState(false);
   const [activeNode, setActiveNode] = useState<string | null>(null);
@@ -55,7 +56,8 @@ export default function Home() {
 
       <Panel activeNode={activeNode} onClose={closePanel} />
 
-      <Chatbot open={chatOpen} onClose={() => setChatOpen(false)} />
+      <Chatbot open={chatOpen} onClose={() => setChatOpen(false)} onOpen={() => setChatOpen(true)} />
+      <AIMascot onOpenChat={() => setChatOpen(true)} />
     </div>
   );
 }
