@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+dist
+dist-ssr
+
 # Sensitive / private files
 DONT PUSH/
 PORTFOLIO_CONTENT.md
