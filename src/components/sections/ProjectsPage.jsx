@@ -1,111 +1,175 @@
-import { Github, ExternalLink, Users, Brain, Eye, TrendingUp, Target } from 'lucide-react';
+import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
+import { useState } from 'react';
 import { projects } from '../../data/projects';
+import useReveal from '../../hooks/useReveal';
 
-const iconMap = {
-  Users,
-  Brain,
-  Eye,
-  TrendingUp,
-  Target
+const STATUS_COLORS = {
+  Live: '#4ade80',
+  Beta: '#facc15',
+  Research: '#60a5fa',
+  Training: '#a78bfa',
+  Production: '#4ade80',
 };
 
-const ProjectsPage = ({ isDark, openProjectModal }) => {
+const ProjectCard = ({ project, featured = false, openProjectModal }) => {
+  const [hovered, setHovered] = useState(false);
+
   return (
-    <div className={`pt-20 sm:pt-24 pb-16 ${isDark ? 'bg-slate-950' : 'bg-gray-50'}`}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            My Projects
-          </h1>
-          <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto px-4 ${isDark ? 'text-slate-300' : 'text-gray-600'}`}>
-            A collection of projects spanning AI research, computer vision, and full-stack development.
-          </p>
+    <div
+      className="relative overflow-hidden border border-border group transition-all duration-300"
+      style={{
+        background: hovered ? '#111' : '#0d0d0d',
+        borderColor: hovered ? '#333' : '#1e1e1e',
+        cursor: 'pointer',
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onClick={() => openProjectModal(project.id)}
+    >
+      {/* Image */}
+      <div className={`overflow-hidden ${featured ? 'h-56' : 'h-44'}`}>
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          style={{ filter: 'grayscale(40%) brightness(0.7)' }}
+        />
+        <div
+          className="absolute inset-0 transition-opacity duration-300"
+          style={{
+            background: 'linear-gradient(to bottom, transparent 30%, #0d0d0d 100%)',
+            opacity: hovered ? 0.9 : 1,
+          }}
+        />
+      </div>
+
+      {/* Content */}
+      <div className="p-5 lg:p-6">
+        <div className="flex items-center justify-between mb-3">
+          <span className="font-mono text-xs" style={{ color: '#666' }}>{project.category} · {project.year}</span>
+          <span
+            className="font-mono text-xs flex items-center gap-1.5"
+            style={{ color: STATUS_COLORS[project.status] || '#888' }}
+          >
+            <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: STATUS_COLORS[project.status] || '#888' }} />
+            {project.status}
+          </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12">
-          {projects.map((project) => {
-            const IconComponent = iconMap[project.iconName];
-            return (
-            <div 
-              key={project.id}
-              className={`group cursor-pointer rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 ${
-                isDark 
-                  ? 'bg-slate-900 hover:bg-slate-800 shadow-xl'
-                  : 'bg-white hover:shadow-xl border border-gray-200'
-              }`}
-              onClick={() => openProjectModal(project.id)}
+        <h3
+          className="font-bold text-fg mb-2 transition-colors duration-200 group-hover:text-lime"
+          style={{ fontSize: featured ? '1.4rem' : '1.1rem' }}
+        >
+          {project.title}
+        </h3>
+
+        <p className="text-muted text-sm leading-relaxed mb-4">{project.subtitle}</p>
+
+        {/* Tech tags */}
+        <div className="flex flex-wrap gap-1.5 mb-4">
+          {project.tech.slice(0, 3).map(t => (
+            <span
+              key={t}
+              className="font-mono text-xs px-2 py-0.5"
+              style={{ background: '#1a1a1a', color: '#666' }}
             >
-              <div className="aspect-video overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-              
-              <div className="p-4 sm:p-5 lg:p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <span className={`text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full ${
-                    isDark 
-                      ? 'bg-cyan-500/20 text-cyan-400' 
-                      : 'bg-blue-100 text-blue-600'
-                  }`}>
-                    {project.category}
-                  </span>
-                  <div className={`px-2 py-1 rounded text-xs font-medium ${
-                    project.status === 'Live' 
-                      ? 'bg-green-100 text-green-700'
-                      : project.status === 'Beta'
-                      ? 'bg-yellow-100 text-yellow-700'
-                      : project.status === 'Training'
-                      ? 'bg-blue-100 text-blue-700'
-                      : 'bg-purple-100 text-purple-700'
-                  }`}>
-                    {project.status}
-                  </div>
-                </div>
-                
-                <h3 className={`text-base sm:text-lg md:text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                  {project.title}
-                </h3>
-                
-                <p className={`text-sm mb-4 leading-relaxed ${isDark ? 'text-slate-300' : 'text-gray-600'}`}>
-                  {project.subtitle}
-                </p>
-                
-                <div className="flex items-center justify-between text-sm">
-                  <span className={isDark ? 'text-slate-400' : 'text-gray-500'}>
-                    {project.year}
-                  </span>
-                  <div className={`flex items-center space-x-1 ${isDark ? 'text-cyan-400' : 'text-blue-600'}`}>
-                    {IconComponent && <IconComponent className="w-4 h-4 sm:w-5 md:w-6 lg:w-6" />}
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-          })}
+              {t}
+            </span>
+          ))}
+          {project.tech.length > 3 && (
+            <span className="font-mono text-xs px-2 py-0.5" style={{ background: '#1a1a1a', color: '#444' }}>
+              +{project.tech.length - 3}
+            </span>
+          )}
         </div>
-        
-        <div className="text-center px-4">
+
+        {/* Metrics (featured only) */}
+        {featured && project.metrics && (
+          <div className="grid grid-cols-3 gap-2 mb-4">
+            {project.metrics.map(m => (
+              <div key={m} className="text-center py-2 border border-border">
+                <div className="font-mono text-xs text-lime leading-tight">{m}</div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div className="flex items-center justify-between">
+          <div className="flex gap-3">
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={e => e.stopPropagation()}
+              className="text-muted-dim hover:text-lime transition-colors"
+            >
+              <Github size={15} />
+            </a>
+          </div>
+          <span className="font-mono text-xs text-muted-dim group-hover:text-lime transition-colors flex items-center gap-1">
+            View details <ArrowUpRight size={12} />
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ProjectsPage = ({ openProjectModal }) => {
+  const sectionRef = useReveal(0.05);
+  const featured = projects.find(p => p.featured);
+  const rest = projects.filter(p => !p.featured);
+
+  return (
+    <section id="projects" style={{ background: '#080808', borderTop: '1px solid #1a1a1a' }} className="py-32">
+      <div ref={sectionRef} className="max-w-7xl mx-auto px-6 lg:px-12">
+
+        <div className="reveal mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div>
+            <div className="section-label mb-3">03 — Projects</div>
+            <h2
+              className="text-fg font-black leading-none"
+              style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', letterSpacing: '-0.03em' }}
+            >
+              What I've made
+            </h2>
+          </div>
           <a
             href="https://github.com/efuayankey"
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex items-center px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg transition-colors text-sm sm:text-base md:text-lg font-medium ${
-              isDark 
-                ? 'bg-slate-800 hover:bg-slate-700 text-white'
-                : 'bg-gray-900 hover:bg-gray-800 text-white'
-            }`}
+            className="font-mono text-xs text-muted hover:text-lime transition-colors flex items-center gap-2 shrink-0"
           >
-            <Github className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3" />
-            <span className="hidden sm:inline">View All Projects on GitHub</span>
-            <span className="sm:hidden">View on GitHub</span>
-            <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 ml-2" />
+            All on GitHub <ExternalLink size={12} />
           </a>
         </div>
+
+        {/* Bento grid */}
+        <div className="reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: '#1a1a1a' }}>
+          {/* Featured — spans 2 cols */}
+          {featured && (
+            <div className="md:col-span-2 bg-bg">
+              <ProjectCard project={featured} featured openProjectModal={openProjectModal} />
+            </div>
+          )}
+
+          {/* First non-featured */}
+          {rest[0] && (
+            <div className="bg-bg">
+              <ProjectCard project={rest[0]} openProjectModal={openProjectModal} />
+            </div>
+          )}
+
+          {/* Remaining cards */}
+          {rest.slice(1).map(p => (
+            <div key={p.id} className="bg-bg">
+              <ProjectCard project={p} openProjectModal={openProjectModal} />
+            </div>
+          ))}
+        </div>
+
       </div>
-    </div>
+    </section>
   );
 };
 

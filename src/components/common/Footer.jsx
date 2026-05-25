@@ -1,15 +1,14 @@
-const Footer = ({ isDark }) => {
+const Footer = () => {
   return (
-    <footer className={`border-t py-4 sm:py-6 text-center ${
-      isDark 
-        ? 'border-slate-800 bg-slate-950' 
-        : 'border-gray-200 bg-gray-50'
-    }`}>
-      <p className={`text-xs sm:text-sm ${
-        isDark ? 'text-slate-400' : 'text-gray-600'
-      }`} style={{fontFamily: 'Inter, system-ui, sans-serif'}}>
-        © 2025 Efua Yankey. All rights reserved.
-      </p>
+    <footer className="border-t py-8" style={{ borderColor: '#1a1a1a', background: '#080808' }}>
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <span className="font-mono text-xs" style={{ color: '#444' }}>
+          © 2026 Efua Yankey
+        </span>
+        <span className="font-mono text-xs" style={{ color: '#333' }}>
+          Built with React · Designed from scratch
+        </span>
+      </div>
     </footer>
   );
 };
