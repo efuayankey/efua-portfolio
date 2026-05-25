@@ -57,7 +57,7 @@ export default function Home() {
       <Panel activeNode={activeNode} onClose={closePanel} />
 
       <Chatbot open={chatOpen} onClose={() => setChatOpen(false)} onOpen={() => setChatOpen(true)} />
-      <AIMascot onOpenChat={() => setChatOpen(true)} />
+      <AIMascot open={chatOpen} onToggle={() => setChatOpen(prev => !prev)} />
     </div>
   );
 }

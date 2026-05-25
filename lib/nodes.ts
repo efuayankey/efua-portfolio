@@ -61,11 +61,10 @@ export const PANEL_DATA: Record<string, PanelData> = {
   center: {
     eyebrow: ':center',
     title: 'Efua Yankey',
-    subtitle: 'CS + Engineering · Data Science Minor · Lehigh University · Class of 2028',
+    subtitle: 'CS + Engineering · Lehigh University · Class of 2028',
     rdf: `:Efua a schema:Person ;
   :studiesAt :LehighUniversity ;
   :major "CS & Engineering" ;
-  :minor "Data Science" ;
   :classOf "2028" ;
   :from :Accra :Ghana ;
   :researchesAt :SWATLab ;
@@ -73,16 +72,12 @@ export const PANEL_DATA: Record<string, PanelData> = {
   :status "Open to 2027 internships" .`,
     sections: [
       {
-        label: 'Origin',
-        text: 'Built NSMQ Recruit in Ghana in high school — academic competition prep platform, 100+ users, no team, no blueprint. Just a problem worth fixing. That instinct never left.',
+        label: 'Who I am',
+        text: 'CS + Engineering student at Lehigh building real AI systems — not demos. I work across LLMs, knowledge graphs, and multimodal AI, and I care about shipping things that are useful, not just impressive.',
       },
       {
-        label: 'At Lehigh',
-        text: 'IRB-approved research, ABRCMS 2025, SWAT Lab under Prof. Jeff Heflin — the person who wrote the OWL standard that powers Google and Amazon\'s knowledge graphs. Doesn\'t do things halfway.',
-      },
-      {
-        label: 'What I care about',
-        text: 'Builds AI that closes gaps, not widens them. Systems for the people they were never designed for. Originally from Accra — that perspective shapes everything.',
+        label: 'Right now',
+        text: 'Doing neurosymbolic AI research at SWAT Lab under Prof. Jeff Heflin — the person who wrote the OWL standard Google and Amazon run on. Before that, built an IRB-approved LLM clinical simulator where 83% of participants preferred my culturally-conditioned model over the baseline. Presented at ABRCMS 2025.',
       },
     ],
     links: [

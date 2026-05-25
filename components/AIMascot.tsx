@@ -14,38 +14,39 @@ const S = {
   serif: { fontFamily: 'var(--font-serif), serif' }      as React.CSSProperties,
 };
 
-export default function AIMascot({ onOpenChat }: { onOpenChat: () => void }) {
-  const [visible, setVisible]   = useState(false);
-  const [msgIdx,  setMsgIdx]    = useState(0);
-  const [waving,  setWaving]    = useState(false);
+export default function AIMascot({ open, onToggle }: { open: boolean; onToggle: () => void }) {
+  const [bubbleVisible, setBubbleVisible] = useState(false);
+  const [msgIdx, setMsgIdx]   = useState(0);
+  const [waving, setWaving]   = useState(false);
 
-  const appear = (idx: number) => {
+  const showBubble = (idx: number) => {
     setMsgIdx(idx);
-    setVisible(true);
+    setBubbleVisible(true);
     setWaving(true);
     setTimeout(() => setWaving(false), 1800);
   };
 
-  // First pop-up after 10s
+  // First pop-up 10s after load
   useEffect(() => {
-    const t = setTimeout(() => appear(0), 10000);
+    const t = setTimeout(() => showBubble(0), 10000);
     return () => clearTimeout(t);
   }, []);
 
-  // Auto-hide after 7s, then reappear every 45s
+  // Auto-hide bubble after 7s, reappear every 45s
   useEffect(() => {
-    if (!visible) return;
-    const hide = setTimeout(() => setVisible(false), 7000);
-    return () => clearTimeout(hide);
-  }, [visible]);
-
-  useEffect(() => {
-    if (visible) return;
-    const t = setTimeout(() => appear((msgIdx + 1) % MESSAGES.length), 45000);
+    if (!bubbleVisible) return;
+    const t = setTimeout(() => setBubbleVisible(false), 7000);
     return () => clearTimeout(t);
-  }, [visible]);
+  }, [bubbleVisible]);
 
-  const handleClick = () => { onOpenChat(); setVisible(false); };
+  useEffect(() => {
+    if (bubbleVisible) return;
+    const t = setTimeout(() => showBubble((msgIdx + 1) % MESSAGES.length), 45000);
+    return () => clearTimeout(t);
+  }, [bubbleVisible]);
+
+  // Hide bubble when chat opens
+  useEffect(() => { if (open) setBubbleVisible(false); }, [open]);
 
   return (
     <>
@@ -61,64 +62,62 @@ export default function AIMascot({ onOpenChat }: { onOpenChat: () => void }) {
           50%     { transform: translateY(-5px); }
         }
         @keyframes bubble-in {
-          from { opacity: 0; transform: translateY(10px) scale(0.95); }
-          to   { opacity: 1; transform: translateY(0)   scale(1); }
+          from { opacity: 0; transform: translateX(10px) scale(0.95); }
+          to   { opacity: 1; transform: translateX(0)   scale(1); }
         }
       `}</style>
 
       <div style={{
-        position: 'fixed', bottom: 24, left: 24, zIndex: 700,
+        position: 'fixed', bottom: 24, right: 24, zIndex: 700,
         display: 'flex', alignItems: 'flex-end', gap: '0.7rem',
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(16px)',
-        transition: 'opacity 0.4s ease, transform 0.4s cubic-bezier(0.16,1,0.3,1)',
-        pointerEvents: visible ? 'all' : 'none',
       }}>
 
-        {/* Speech bubble */}
-        <div
-          onClick={handleClick}
-          style={{
-            background: '#0a0a0a',
-            border: '1px solid #1e1e1e',
-            borderBottom: '2px solid #e8552a',
-            padding: '0.65rem 0.9rem',
-            maxWidth: 190,
-            cursor: 'pointer',
-            animation: visible ? 'bubble-in 0.4s cubic-bezier(0.16,1,0.3,1)' : 'none',
-          }}
-        >
-          <div style={{ ...S.mono, fontSize: '0.44rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#e8552a', marginBottom: '0.3rem' }}>
-            :efua.ai
+        {/* Speech bubble — pops up to the left of the orb */}
+        {bubbleVisible && (
+          <div
+            onClick={() => { onToggle(); setBubbleVisible(false); }}
+            style={{
+              background: '#0a0a0a',
+              border: '1px solid #1e1e1e',
+              borderBottom: '2px solid #e8552a',
+              padding: '0.65rem 0.9rem',
+              maxWidth: 190,
+              cursor: 'pointer',
+              animation: 'bubble-in 0.4s cubic-bezier(0.16,1,0.3,1)',
+            }}
+          >
+            <div style={{ ...S.mono, fontSize: '0.44rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#e8552a', marginBottom: '0.3rem' }}>
+              :efua.ai
+            </div>
+            <div style={{ ...S.serif, fontStyle: 'italic', fontSize: '0.78rem', color: 'rgba(253,246,232,0.75)', lineHeight: 1.55, whiteSpace: 'pre-line' }}>
+              {MESSAGES[msgIdx]}
+            </div>
+            <div style={{ ...S.mono, fontSize: '0.4rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(232,85,42,0.5)', marginTop: '0.4rem' }}>
+              tap to chat →
+            </div>
           </div>
-          <div style={{ ...S.serif, fontStyle: 'italic', fontSize: '0.78rem', color: 'rgba(253,246,232,0.75)', lineHeight: 1.55, whiteSpace: 'pre-line' }}>
-            {MESSAGES[msgIdx]}
-          </div>
-          <div style={{ ...S.mono, fontSize: '0.4rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(232,85,42,0.5)', marginTop: '0.4rem' }}>
-            tap to chat →
-          </div>
-        </div>
+        )}
 
-        {/* Orb character */}
+        {/* Orb — always visible, replaces the old chat button */}
         <div
-          onClick={handleClick}
+          onClick={onToggle}
           style={{
-            animation: 'mascot-float 3s ease-in-out infinite',
+            width: 48, height: 48, borderRadius: '50%', flexShrink: 0,
+            background: open
+              ? '#e8552a'
+              : 'radial-gradient(circle at 35% 35%, rgba(232,85,42,0.2), #0a0a0a)',
+            border: '2px solid #e8552a',
+            boxShadow: '0 0 20px rgba(232,85,42,0.35)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: open ? '1rem' : '1.2rem',
             cursor: 'pointer',
-            flexShrink: 0,
+            transition: 'background 0.3s, font-size 0.2s',
+            animation: waving
+              ? 'mascot-wave 0.6s ease 3'
+              : 'mascot-float 3s ease-in-out infinite',
           }}
         >
-          <div style={{
-            width: 46, height: 46, borderRadius: '50%',
-            background: 'radial-gradient(circle at 35% 35%, rgba(232,85,42,0.25), #0a0a0a)',
-            border: '2px solid #e8552a',
-            boxShadow: '0 0 18px rgba(232,85,42,0.35), inset 0 0 12px rgba(232,85,42,0.08)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: '1.2rem',
-            animation: waving ? 'mascot-wave 0.6s ease 3' : 'mascot-float 3s ease-in-out infinite',
-          }}>
-            ✦
-          </div>
+          {open ? '✕' : '✦'}
         </div>
       </div>
     </>

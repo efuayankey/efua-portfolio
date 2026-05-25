@@ -70,28 +70,9 @@ export default function Chatbot({ open, onClose, onOpen }: ChatbotProps) {
 
   return (
     <>
-      {/* Floating bubble — always visible */}
-      <button
-        onClick={open ? onClose : onOpen}
-        style={{
-          position: 'fixed', bottom: 24, right: 24, zIndex: 700,
-          width: 48, height: 48, borderRadius: '50%',
-          background: '#e8552a', border: 'none', cursor: 'none',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          boxShadow: '0 0 20px rgba(232,85,42,0.4)',
-          transition: 'transform 0.2s, box-shadow 0.2s',
-        }}
-        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'scale(1.1)'; }}
-        onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'scale(1)'; }}
-      >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-        </svg>
-      </button>
-
       {/* Chat window */}
       <div style={{
-        position: 'fixed', bottom: 84, right: 24, zIndex: 700,
+        position: 'fixed', bottom: 88, right: 24, zIndex: 700,
         width: 'min(360px, calc(100vw - 32px))',
         height: 'min(480px, calc(100vh - 120px))',
         background: '#0a0a0a', borderTop: '2px solid #e8552a',
