@@ -218,7 +218,7 @@ export default function MobileView() {
         </p>
       </div>
 
-      <Chatbot open={chatOpen} onClose={() => setChatOpen(false)} />
+      <Chatbot open={chatOpen} onClose={() => setChatOpen(false)} onOpen={() => setChatOpen(true)} />
     </div>
   );
 }
