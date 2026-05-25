@@ -449,9 +449,46 @@ export default function Graph({ onNodeHover, onNodeClick, activeNode, bootDone, 
       dragRef.current = null;
     };
 
+    // Touch support for iPad/tablet
+    const getTouchPos = (e: TouchEvent) => {
+      const t = e.touches[0] || e.changedTouches[0];
+      return { x: t.clientX, y: t.clientY };
+    };
+    const onTouchStart = (e: TouchEvent) => {
+      const { x, y } = getTouchPos(e);
+      mouseRef.current = { x, y };
+      const id = getNodeAt(x, y);
+      if (!id) return;
+      const n = nodesRef.current.find(nd => nd.id === id);
+      if (!n) return;
+      dragRef.current = { id, ox: x - n.x, oy: y - n.y, startX: x, startY: y };
+    };
+    const onTouchMove = (e: TouchEvent) => {
+      e.preventDefault();
+      const { x, y } = getTouchPos(e);
+      mouseRef.current = { x, y };
+      if (dragRef.current) {
+        const n = nodesRef.current.find(nd => nd.id === dragRef.current!.id);
+        if (n) { n.x = x - dragRef.current.ox; n.y = y - dragRef.current.oy; n.vx = 0; n.vy = 0; n.pinned = true; }
+      }
+    };
+    const onTouchEnd = (e: TouchEvent) => {
+      if (!dragRef.current) return;
+      const touch = e.changedTouches[0];
+      const { id, startX, startY } = dragRef.current;
+      const n = nodesRef.current.find(nd => nd.id === id);
+      if (n) n.pinned = false;
+      const dist = Math.sqrt((touch.clientX - startX) ** 2 + (touch.clientY - startY) ** 2);
+      if (dist < 10) onNodeClickRef.current(id);
+      dragRef.current = null;
+    };
+
     canvas.addEventListener('mousemove', onMove);
     canvas.addEventListener('mousedown', onDown);
     canvas.addEventListener('mouseup', onUp);
+    canvas.addEventListener('touchstart', onTouchStart, { passive: true });
+    canvas.addEventListener('touchmove', onTouchMove, { passive: false });
+    canvas.addEventListener('touchend', onTouchEnd);
 
     return () => {
       active = false;
@@ -460,6 +497,9 @@ export default function Graph({ onNodeHover, onNodeClick, activeNode, bootDone, 
       canvas.removeEventListener('mousemove', onMove);
       canvas.removeEventListener('mousedown', onDown);
       canvas.removeEventListener('mouseup', onUp);
+      canvas.removeEventListener('touchstart', onTouchStart);
+      canvas.removeEventListener('touchmove', onTouchMove);
+      canvas.removeEventListener('touchend', onTouchEnd);
     };
   }, []); // runs once — reads live values via refs
 

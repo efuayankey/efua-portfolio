@@ -18,7 +18,7 @@ export default function Home() {
   const [tooltip,    setTooltip]    = useState<TooltipState | null>(null);
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
+    const check = () => setIsMobile(window.innerWidth < 768);
     check();
     window.addEventListener('resize', check);
     return () => window.removeEventListener('resize', check);
@@ -31,7 +31,7 @@ export default function Home() {
       setChatOpen(prev => !prev);
       setActiveNode(null);
     } else if (id === 'resume') {
-      window.open('/Efua_Yankey_Resume_(2026).pdf', '_blank');
+      // resume link — will be updated with Google Doc URL when ready
     } else {
       setActiveNode(prev => prev === id ? null : id);
       setChatOpen(false);

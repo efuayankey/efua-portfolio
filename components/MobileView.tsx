@@ -41,7 +41,7 @@ export default function MobileView() {
         <div style={{ display: 'flex', gap: '1.2rem', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
           <div style={{ position: 'relative', flexShrink: 0 }}>
             <img
-              src="/efua-photo.png"
+              src="/efua-photo.jpg"
               alt="Efua Yankey"
               style={{ width: 72, height: 72, borderRadius: '50%', objectFit: 'cover', border: '2px solid #e8552a', display: 'block' }}
             />
