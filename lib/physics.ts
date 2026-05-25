@@ -11,7 +11,8 @@ export interface PhysNode {
   phase: number; // per-node breathing phase offset
 }
 
-const ORBIT_RADIUS = 290; // distance from center to satellite nodes
+const ORBIT_RADIUS = 290; // desktop orbit radius
+export const orbitRadius = (cx: number, cy: number) => Math.min(cx * 0.78, cy * 0.78, ORBIT_RADIUS);
 const SPRING       = 0.06; // spring strength back to home
 const DAMPING      = 0.75;
 
@@ -61,8 +62,8 @@ export function initNodes(
     const idx = satellites.findIndex(s => s.id === d.id);
     // Start from the top (-90°) and spread evenly clockwise
     const angle = -Math.PI / 2 + (idx / count) * Math.PI * 2;
-    const hx = cx + Math.cos(angle) * ORBIT_RADIUS;
-    const hy = cy + Math.sin(angle) * ORBIT_RADIUS;
+    const hx = cx + Math.cos(angle) * orbitRadius(cx, cy);
+    const hy = cy + Math.sin(angle) * orbitRadius(cx, cy);
     return {
       id: d.id,
       x: cx, y: cy, // start at center for boot scatter
@@ -86,8 +87,8 @@ export function updateHomePositions(
   const count = satellites.length;
   satellites.forEach((n, idx) => {
     const angle = -Math.PI / 2 + (idx / count) * Math.PI * 2;
-    n.homeX = cx + Math.cos(angle) * ORBIT_RADIUS;
-    n.homeY = cy + Math.sin(angle) * ORBIT_RADIUS;
+    n.homeX = cx + Math.cos(angle) * orbitRadius(cx, cy);
+    n.homeY = cy + Math.sin(angle) * orbitRadius(cx, cy);
   });
   const center = nodes.find(n => n.id === 'center');
   if (center) { center.homeX = cx; center.homeY = cy; }
