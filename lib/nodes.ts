@@ -30,7 +30,7 @@ export interface PanelData {
 
 export const NODE_DEFS: NodeDef[] = [
   { id: 'center',     label: '',           color: '#e8552a', r: 82, tooltipDesc: 'SWE Intern · AI Researcher · Lehigh · 2028' },
-  { id: 'research',   label: 'Research',   color: '#7ab8e8', r: 44, tooltipDesc: 'SWAT Lab · AIMES · GNN' },
+  { id: 'research',   label: 'Research',   color: '#7ab8e8', r: 44, tooltipDesc: 'SWAT Lab · AIMES · Neurosymbolic AI' },
   { id: 'projects',   label: 'Projects',   color: '#a8d8a8', r: 44, tooltipDesc: '6 projects · AI · Full-Stack' },
   { id: 'experience', label: 'Experience', color: '#f0c674', r: 40, tooltipDesc: '5 roles · Industry + research + teaching' },
   { id: 'skills',     label: 'Skills',     color: '#c4a8d8', r: 38, tooltipDesc: 'Languages · AI/ML · Infra' },
@@ -116,12 +116,6 @@ export const PANEL_DATA: Record<string, PanelData> = {
         meta: 'May 2025 – Feb 2026 · IRB Approved · ABRCMS 2025',
         desc: 'Production LLM simulator for cultural competency training in clinical AI. 12 cultural profiles, GPT-4 fine-tuned with prompt-conditioning middleware. 83% of 30+ IRB participants preferred the culturally-conditioned model. Presented findings at ABRCMS 2025.',
         tags: ['LLMs', 'GPT-4', 'Cultural AI', 'FastAPI', 'AWS', 'IRB Research'],
-      },
-      {
-        name: 'GNN on Medicare Data',
-        meta: 'Spring 2026 · Prof. Wayne',
-        desc: 'Graph neural networks on opioid prescribing patterns in Medicare data. Modeling provider networks as graphs to surface anomalous prescribing behavior using PyTorch Geometric.',
-        tags: ['PyTorch Geometric', 'GNNs', 'Healthcare ML', 'Python'],
       },
     ],
   },

@@ -13,7 +13,6 @@ ABOUT EFUA:
 RESEARCH:
 - SWAT Lab, Lehigh — Neurosymbolic AI under Prof. Jeff Heflin (pioneer of OWL standard used by Google and Amazon). Integrating neural networks with backward-chaining reasoners, knowledge graph reasoning.
 - WiNS Lab — AIMES: IRB-approved LLM clinical training simulator. 83% of 30+ participants preferred culturally-conditioned AI. Presented at ABRCMS 2025.
-- GNN research on Medicare opioid prescribing data using PyTorch Geometric, under Prof. Wayne.
 
 PROJECTS:
 - HawkSearch: AI agent at Agentathon 2026 using Claude API. Scrapes Lehigh faculty pages, scores compatibility, drafts cold emails. Built in one night. Won Best Value (1st Place).
