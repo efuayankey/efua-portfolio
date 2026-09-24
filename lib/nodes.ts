@@ -36,7 +36,7 @@ export const NODE_DEFS: NodeDef[] = [
   { id: 'experience', label: 'Experience', color: '#f0c674', r: 40, tooltipDesc: '4 roles · Industry + research + teaching' },
   { id: 'skills',     label: 'Skills',     color: '#c4a8d8', r: 38, tooltipDesc: 'Languages · AI/ML · Infra' },
   { id: 'leadership', label: 'Leadership', color: '#6ecfbf', r: 38, tooltipDesc: 'Campus roles · Orgs · Fellowships' },
-  { id: 'contact',    label: 'Contact',    color: '#e8552a', r: 34, tooltipDesc: 'Open to 2027 internships' },
+  { id: 'contact',    label: 'Contact',    color: '#e8552a', r: 34, tooltipDesc: 'Backend · Infra · Distributed Systems · AI' },
   { id: 'ask',        label: 'Ask',        color: '#e8552a', r: 30, tooltipDesc: 'Chat with AI Efua' },
   { id: 'resume',     label: 'Resume',     color: '#e8552a', r: 26, tooltipDesc: 'Request access to full resume →' },
   { id: 'hackathons', label: 'Hacks',      color: '#f4845f', r: 40, tooltipDesc: 'Agentathon · Claude API · one night builds' },
@@ -82,7 +82,7 @@ export const PANEL_DATA: Record<string, PanelData> = {
       },
     ],
     links: [
-      { label: 'Email Me', href: 'mailto:efuayankey.0@gmail.com', primary: true },
+      { label: 'Email Me', href: 'mailto:efuayankey123@gmail.com', primary: true },
       { label: 'LinkedIn ↗', href: 'https://linkedin.com/in/efuayankey' },
       { label: 'GitHub ↗', href: 'https://github.com/efuayankey' },
       { label: 'Resume ↗', href: 'https://docs.google.com/document/d/1-layYoHlzmarjr5rbgDIHdXKIbuEdIeDaFOY0hx88iM/edit?usp=sharing' },
@@ -317,16 +317,21 @@ export const PANEL_DATA: Record<string, PanelData> = {
   contact: {
     eyebrow: ':contact',
     title: 'Contact',
-    subtitle: 'Open to Summer 2027 internships',
-    rdf: `:Efua schema:email "efuayankey.0@gmail.com" ;
-  :availableFor "Summer 2027 Internships" ;
-  :interestedIn :SWE , :MLE , :QuantRoles .`,
-    contactCopy: 'Currently recruiting for Summer 2027. Targeting SWE, MLE, and quant-adjacent roles at high-performance tech companies. If you\'re building something real, she wants to hear about it.',
+    subtitle: 'Let\'s talk.',
+    rdf: `:Efua schema:email "efuayankey123@gmail.com" ;
+  :interestedIn :BackendSystems ,
+                :Infrastructure ,
+                :DistributedSystems ,
+                :AI ;
+  :openTo :Opportunities ,
+          :Collaboration ,
+          :Conversation .`,
+    contactCopy: 'If something here caught your attention — a project, a research idea, or something you\'re building — feel free to reach out. I\'m interested in software engineering opportunities, especially work around backend systems, infrastructure, distributed systems, and AI. I\'m also always open to talking about interesting problems, research, projects, or potential collaborations.',
     links: [
-      { label: 'Email Me', href: 'mailto:efuayankey.0@gmail.com', primary: true },
+      { label: 'Email Me', href: 'mailto:efuayankey123@gmail.com', primary: true },
       { label: 'LinkedIn ↗', href: 'https://linkedin.com/in/efuayankey' },
       { label: 'GitHub ↗', href: 'https://github.com/efuayankey' },
-      { label: 'Resume ↗', href: 'https://docs.google.com/document/d/1-layYoHlzmarjr5rbgDIHdXKIbuEdIeDaFOY0hx88iM/edit?usp=sharing' },
+      { label: 'Instagram ↗', href: 'https://www.instagram.com/efua.yankey/' },
     ],
   },
 };
