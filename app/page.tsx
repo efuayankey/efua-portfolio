@@ -22,7 +22,7 @@ export default function Home() {
       setChatOpen(prev => !prev);
       setActiveNode(null);
     } else if (id === 'resume') {
-      // resume link — will be updated with Google Doc URL when ready
+      window.open('https://docs.google.com/document/d/1-layYoHlzmarjr5rbgDIHdXKIbuEdIeDaFOY0hx88iM/edit?usp=sharing', '_blank', 'noopener,noreferrer');
     } else {
       setActiveNode(prev => prev === id ? null : id);
       setChatOpen(false);

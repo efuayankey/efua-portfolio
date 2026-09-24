@@ -38,7 +38,7 @@ export const NODE_DEFS: NodeDef[] = [
   { id: 'leadership', label: 'Leadership', color: '#6ecfbf', r: 38, tooltipDesc: 'Campus roles · Orgs · Fellowships' },
   { id: 'contact',    label: 'Contact',    color: '#e8552a', r: 34, tooltipDesc: 'Open to 2027 internships' },
   { id: 'ask',        label: 'Ask',        color: '#e8552a', r: 30, tooltipDesc: 'Chat with AI Efua' },
-  { id: 'resume',     label: 'Resume',     color: '#e8552a', r: 26, tooltipDesc: 'Open full resume PDF →' },
+  { id: 'resume',     label: 'Resume',     color: '#e8552a', r: 26, tooltipDesc: 'Request access to full resume →' },
   { id: 'hackathons', label: 'Hacks',      color: '#f4845f', r: 40, tooltipDesc: 'Agentathon · Claude API · one night builds' },
 ];
 
@@ -85,7 +85,7 @@ export const PANEL_DATA: Record<string, PanelData> = {
       { label: 'Email Me', href: 'mailto:efuayankey.0@gmail.com', primary: true },
       { label: 'LinkedIn ↗', href: 'https://linkedin.com/in/efuayankey' },
       { label: 'GitHub ↗', href: 'https://github.com/efuayankey' },
-      { label: 'Resume ↗', href: '#' },
+      { label: 'Resume ↗', href: 'https://docs.google.com/document/d/1-layYoHlzmarjr5rbgDIHdXKIbuEdIeDaFOY0hx88iM/edit?usp=sharing' },
     ],
   },
 
@@ -326,7 +326,7 @@ export const PANEL_DATA: Record<string, PanelData> = {
       { label: 'Email Me', href: 'mailto:efuayankey.0@gmail.com', primary: true },
       { label: 'LinkedIn ↗', href: 'https://linkedin.com/in/efuayankey' },
       { label: 'GitHub ↗', href: 'https://github.com/efuayankey' },
-      { label: 'Resume ↗', href: '#' },
+      { label: 'Resume ↗', href: 'https://docs.google.com/document/d/1-layYoHlzmarjr5rbgDIHdXKIbuEdIeDaFOY0hx88iM/edit?usp=sharing' },
     ],
   },
 };
