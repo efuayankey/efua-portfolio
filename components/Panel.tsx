@@ -1,4 +1,5 @@
 'use client';
+import { useEffect, useState } from 'react';
 import { PANEL_DATA, TaggedItem } from '@/lib/nodes';
 
 interface PanelProps {
@@ -8,12 +9,26 @@ interface PanelProps {
 
 
 function RDFBlock({ code }: { code: string }) {
-  const tokenize = (line: string) => {
-    return line
-      .replace(/(".*?")/g, '<span style="color:#f0c674">$1</span>')
-      .replace(/\b(a)\b/g, '<span style="color:#7ab8e8">$1</span>')
-      .replace(/([;.,])/g, '<span style="color:rgba(253,246,232,0.2)">$1</span>');
-  };
+  const [visibleLen, setVisibleLen] = useState(0);
+
+  useEffect(() => {
+    setVisibleLen(0);
+    const step = Math.max(1, Math.ceil(code.length / 45));
+    const id = setInterval(() => {
+      setVisibleLen(v => {
+        const next = v + step;
+        if (next >= code.length) {
+          clearInterval(id);
+          return code.length;
+        }
+        return next;
+      });
+    }, 40);
+    return () => clearInterval(id);
+  }, [code]);
+
+  const visibleCode = code.slice(0, visibleLen);
+  const done = visibleLen >= code.length;
 
   return (
     <pre style={{
@@ -22,7 +37,7 @@ function RDFBlock({ code }: { code: string }) {
       padding: '0.9rem 1rem', marginBottom: '2rem',
       fontSize: '0.58rem', lineHeight: 1.9, overflowX: 'auto',
     }}>
-      {code.split('\n').map((line, i) => {
+      {visibleCode.split('\n').map((line, i) => {
         const subjectMatch = line.match(/^(:[\w]+)/);
         const predicateMatch = line.match(/^\s+(:\w+|schema:\w+|a)\s/);
 
@@ -41,6 +56,7 @@ function RDFBlock({ code }: { code: string }) {
 
         return <span key={i} dangerouslySetInnerHTML={{ __html: html + '\n' }} />;
       })}
+      {!done && <span style={{ display: 'inline-block', width: 6, height: '0.9em', background: '#e8552a', animation: 'blink 0.8s steps(2) infinite', verticalAlign: 'text-bottom' }} />}
     </pre>
   );
 }
@@ -54,6 +70,12 @@ const S = {
 export default function Panel({ activeNode, onClose }: PanelProps) {
   const data = activeNode ? PANEL_DATA[activeNode] : null;
   const open = Boolean(data);
+
+  let stagger = 0;
+  const reveal = (): React.CSSProperties => ({
+    animation: 'chatslide 0.55s cubic-bezier(0.16, 1, 0.3, 1) both',
+    animationDelay: `${Math.min(stagger++, 13) * 50}ms`,
+  });
 
   return (
     <div
@@ -92,24 +114,26 @@ export default function Panel({ activeNode, onClose }: PanelProps) {
       {data && (
         <div style={{ padding: '2rem 1.5rem' }}>
           {/* Title */}
-          <div style={{ ...S.mono, fontSize: '0.5rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: '#e8552a', marginBottom: '0.6rem' }}>
+          <div style={{ ...S.mono, fontSize: '0.5rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: '#e8552a', marginBottom: '0.6rem', ...reveal() }}>
             {data.eyebrow}
           </div>
-          <h1 style={{ ...S.bebas, fontSize: '3.2rem', letterSpacing: '0.02em', lineHeight: 0.92, marginBottom: '0.6rem', color: '#fdf6e8' }}>
+          <h1 style={{ ...S.bebas, fontSize: '3.2rem', letterSpacing: '0.02em', lineHeight: 0.92, marginBottom: '0.6rem', color: '#fdf6e8', ...reveal() }}>
             {data.title}
           </h1>
-          <p style={{ ...S.serif, fontStyle: 'italic', fontSize: '0.95rem', color: 'rgba(253,246,232,0.4)', marginBottom: '2rem', lineHeight: 1.55 }}>
+          <p style={{ ...S.serif, fontStyle: 'italic', fontSize: '0.95rem', color: 'rgba(253,246,232,0.4)', marginBottom: '2rem', lineHeight: 1.55, ...reveal() }}>
             {data.subtitle}
           </p>
 
           {/* RDF block */}
-          <RDFBlock code={data.rdf} />
+          <div style={reveal()}>
+            <RDFBlock code={data.rdf} />
+          </div>
 
           {/* Stats */}
           {data.stats && (
             <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
               {data.stats.map(s => (
-                <div key={s.label} style={{ flex: 1, minWidth: 70, borderTop: '2px solid #e8552a', paddingTop: '0.5rem' }}>
+                <div key={s.label} style={{ flex: 1, minWidth: 70, borderTop: '2px solid #e8552a', paddingTop: '0.5rem', ...reveal() }}>
                   <div style={{ ...S.bebas, fontSize: '2rem', color: '#e8552a', lineHeight: 1 }}>{s.value}</div>
                   <div style={{ ...S.mono, fontSize: '0.48rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(253,246,232,0.12)' }}>{s.label}</div>
                 </div>
@@ -119,7 +143,7 @@ export default function Panel({ activeNode, onClose }: PanelProps) {
 
           {/* Text sections */}
           {data.sections?.map(sec => (
-            <div key={sec.label} style={{ marginBottom: '1.8rem' }}>
+            <div key={sec.label} style={{ marginBottom: '1.8rem', ...reveal() }}>
               <div style={{ ...S.mono, fontSize: '0.5rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#e8552a', marginBottom: '0.7rem', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
                 {sec.label}
                 <span style={{ flex: 'none', width: 24, height: 1, background: 'rgba(232,85,42,0.4)', display: 'inline-block' }} />
@@ -134,7 +158,7 @@ export default function Panel({ activeNode, onClose }: PanelProps) {
 
           {/* Contact copy */}
           {data.contactCopy && (
-            <div style={{ marginBottom: '1.8rem' }}>
+            <div style={{ marginBottom: '1.8rem', ...reveal() }}>
               <p style={{ ...S.serif, fontSize: '0.97rem', lineHeight: 1.85, color: 'rgba(253,246,232,0.4)' }}>
                 {data.contactCopy}
               </p>
@@ -151,9 +175,17 @@ export default function Panel({ activeNode, onClose }: PanelProps) {
             const renderItem = (item: TaggedItem) => (
               <div
                 key={item.name}
-                style={{ border: '1px solid #1e1e1e', padding: '1.1rem', transition: 'border-color 0.2s' }}
-                onMouseEnter={e => ((e.currentTarget as HTMLElement).style.borderColor = 'rgba(232,85,42,0.4)')}
-                onMouseLeave={e => ((e.currentTarget as HTMLElement).style.borderColor = '#1e1e1e')}
+                style={{ border: '1px solid #1e1e1e', padding: '1.1rem', transition: 'border-color 0.2s, box-shadow 0.2s', ...reveal() }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = 'rgba(232,85,42,0.4)';
+                  el.style.boxShadow = '0 4px 20px rgba(232,85,42,0.08)';
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = '#1e1e1e';
+                  el.style.boxShadow = 'none';
+                }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.15rem' }}>
                   <div style={{ ...S.bebas, fontSize: '1.2rem', letterSpacing: '0.04em', color: '#fdf6e8' }}>{item.name}</div>
@@ -191,7 +223,7 @@ export default function Panel({ activeNode, onClose }: PanelProps) {
           {data.skillGroups && (
             <div style={{ marginBottom: '1.8rem' }}>
               {data.skillGroups.map(grp => (
-                <div key={grp.category} style={{ marginBottom: '1.2rem' }}>
+                <div key={grp.category} style={{ marginBottom: '1.2rem', ...reveal() }}>
                   <div style={{ ...S.mono, fontSize: '0.5rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#e8552a', marginBottom: '0.6rem', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
                     {grp.category}
                     <span style={{ width: 24, height: 1, background: 'rgba(232,85,42,0.4)', display: 'inline-block' }} />
@@ -215,7 +247,7 @@ export default function Panel({ activeNode, onClose }: PanelProps) {
 
           {/* Memberships */}
           {data.memberships && (
-            <div style={{ marginBottom: '1.8rem' }}>
+            <div style={{ marginBottom: '1.8rem', ...reveal() }}>
               <div style={{ ...S.mono, fontSize: '0.5rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#e8552a', marginBottom: '0.6rem' }}>Memberships</div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
                 {data.memberships.map(m => (
@@ -227,7 +259,7 @@ export default function Panel({ activeNode, onClose }: PanelProps) {
 
           {/* Links */}
           {data.links && (
-            <div style={{ display: 'flex', gap: '0.7rem', flexWrap: 'wrap', marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid #1e1e1e' }}>
+            <div style={{ display: 'flex', gap: '0.7rem', flexWrap: 'wrap', marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid #1e1e1e', ...reveal() }}>
               {data.links.map(link => (
                 <a
                   key={link.label}

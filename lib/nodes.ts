@@ -208,9 +208,14 @@ export const PANEL_DATA: Record<string, PanelData> = {
     eyebrow: ':skills',
     title: 'Skills',
     subtitle: 'Languages · Backend · Cloud & Infra · Databases · AI/ML',
-    rdf: `:Efua :knows :Python , :PyTorch ,
-              :Claude , :NextJS ,
-              :AWS , :TypeScript .`,
+    rdf: `:Efua :buildsWith :Python , :TypeScript ,
+                  :PyTorch , :FastAPI ,
+                  :NextJS , :AWS ;
+
+      :focusesOn :BackendSystems ,
+                 :DistributedSystems ,
+                 :Infrastructure ,
+                 :AI .`,
     skillGroups: [
       {
         category: 'Languages',
