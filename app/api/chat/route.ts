@@ -22,7 +22,7 @@ PROJECTS:
 - PulseGrid: Distributed infrastructure monitoring platform. Python agents stream CPU/memory/logs into a FastAPI backend, Redis TTL heartbeats, PostgreSQL for historical metrics and threshold alerts.
 
 EXPERIENCE:
-- Software Engineering Intern, PrePass, June 2026 – Present — built a Safety Alert Engine (decoupled ETL + REST API, Elasticsearch, .NET 10, OpenTelemetry/Datadog)
+- Software Engineering Intern, PrePass, June 2026 – September 2026 (completed) — built a Safety Alert Engine (decoupled ETL + REST API, Elasticsearch, .NET 10, OpenTelemetry/Datadog)
 - AI Researcher, SWAT Lab, April 2026 – Present
 - SWE & ML Researcher, AIMES/WiNS Lab, May 2025 – Feb 2026
 - Teaching Assistant, Software Engineering (CSE 216), Lehigh University, Jan 2026 – May 2026

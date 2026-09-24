@@ -67,18 +67,18 @@ export const PANEL_DATA: Record<string, PanelData> = {
   :studiesAt :LehighUniversity ;
   :major "CS & Engineering" ;
   :classOf "2028" ;
-  :internAt :PrePass ;
+  :internedAt :PrePass ;
   :researchesAt :SWATLab ;
   :advisedBy :ProfHeflin ;
   :status "Open to 2027 internships" .`,
     sections: [
       {
         label: 'Who I am',
-        text: 'CS + Engineering student at Lehigh building real AI systems — not demos. I work across LLMs, knowledge graphs, and multimodal AI, and I care about shipping things that are useful, not just impressive.',
+        text: 'I\'m Efua, a CS + Engineering student at Lehigh. I\'ve spent the last few years building across different parts of software — products for students, backend systems, AI research — but lately I\'ve found myself especially drawn to backend engineering, infrastructure, and distributed systems.\n\nA lot of what I build starts pretty simply: I run into something I wish existed, or get curious enough about how something works that I want to build my own version of it. NSMQ MasterQuiz started that way — I originally built it to help myself practice for the National Science & Maths Quiz, and students at my former high school are still using it years later. That same curiosity has since taken me into everything from distributed task processing to AI-powered tools.',
       },
       {
         label: 'Right now',
-        text: 'Software Engineering Intern at PrePass, building safety-alert infrastructure — and doing neurosymbolic AI research at SWAT Lab under Prof. Jeff Heflin, the person who wrote the OWL standard Google and Amazon run on. Before that, built an IRB-approved LLM clinical simulator where 83% of participants preferred my culturally-conditioned model over the baseline. Presented at ABRCMS 2025.',
+        text: 'I\'m doing neurosymbolic AI research at Lehigh, exploring how neural models can produce explanations that are actually easy for people to understand. I also just wrapped up a software engineering internship at PrePass, where I worked on the backend of a real-time safety-alert system — the kind of project that made me even more interested in the systems behind a product: how they communicate, scale, recover when things fail, and stay reliable when people actually depend on them.\n\nI\'m still exploring AI alongside all of that, especially where it overlaps with systems and infrastructure. Outside of CS, I\'m usually listening to music, taking photos, or watching basketball — probably more basketball than I should :)',
       },
     ],
     links: [
@@ -187,7 +187,7 @@ export const PANEL_DATA: Record<string, PanelData> = {
     items: [
       {
         name: 'Software Engineering Intern',
-        meta: 'PrePass · June 2026 – Present',
+        meta: 'PrePass · June 2026 – September 2026',
         desc: 'Built a Safety Alert Engine replacing a CPU-heavy legacy system with decoupled ETL and REST API layers. Ingests Colorado 511 road hazards every 5 min, indexing ~1,000 incidents into Elasticsearch via bulk batching. Shipped a 2-endpoint .NET 10 API serving category and geo-distance driver alerts under 100ms p95, with exponential-backoff retries, circuit breakers, and OpenTelemetry tracing exported to Datadog.',
         tags: ['.NET 10', 'C#', 'Elasticsearch', 'REST APIs', 'OpenTelemetry', 'Datadog'],
       },

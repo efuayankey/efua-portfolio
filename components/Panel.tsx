@@ -124,9 +124,11 @@ export default function Panel({ activeNode, onClose }: PanelProps) {
                 {sec.label}
                 <span style={{ flex: 'none', width: 24, height: 1, background: 'rgba(232,85,42,0.4)', display: 'inline-block' }} />
               </div>
-              <p style={{ ...S.serif, fontSize: '0.97rem', lineHeight: 1.85, color: 'rgba(253,246,232,0.4)' }}
-                dangerouslySetInnerHTML={{ __html: sec.text.replace(/\*(.+?)\*/g, '<em style="color:#fdf6e8;font-style:italic">$1</em>') }}
-              />
+              {sec.text.split('\n\n').map((para, i) => (
+                <p key={i} style={{ ...S.serif, fontSize: '0.97rem', lineHeight: 1.85, color: 'rgba(253,246,232,0.4)', marginBottom: i < sec.text.split('\n\n').length - 1 ? '1rem' : 0 }}
+                  dangerouslySetInnerHTML={{ __html: para.replace(/\*(.+?)\*/g, '<em style="color:#fdf6e8;font-style:italic">$1</em>') }}
+                />
+              ))}
             </div>
           ))}
 
