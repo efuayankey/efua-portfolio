@@ -22,11 +22,10 @@ PROJECTS:
 - PulseGrid: Distributed infrastructure monitoring platform. Python agents stream CPU/memory/logs into a FastAPI backend, Redis TTL heartbeats, PostgreSQL for historical metrics and threshold alerts.
 
 EXPERIENCE:
-- Software Engineering Intern, PrePass, June 2026 – September 2026 (completed) — built a Safety Alert Engine (decoupled ETL + REST API, Elasticsearch, .NET 10, OpenTelemetry/Datadog)
-- AI Researcher, SWAT Lab, April 2026 – Present
-- SWE & ML Researcher, AIMES/WiNS Lab, May 2025 – Feb 2026
+- Software Engineering Intern, PrePass, June 2026 – September 2026 (completed) — backend/infrastructure for a real-time safety alert system ingesting Colorado road-hazard data, served via low-latency APIs (sub-100ms p95 target). Worked across ingestion, Elasticsearch, reliability, observability, and deployment.
+- AI Researcher, SWAT Lab, April 2026 – Present — researching neurosymbolic AI, focused on making neural models produce explanations as logical rules; building and testing models that connect learned representations with symbolic reasoning for more interpretable AI.
+- SWE & ML Researcher, AIMES/WiNS Lab, May 2025 – Feb 2026 — worked on AIMES, a culturally adaptive AI platform for student support and counselor training; helped build/evaluate the system, worked on LLM behavior and application experience, supported an IRB-approved user study, and presented at ABRCMS 2025.
 - Teaching Assistant, Software Engineering (CSE 216), Lehigh University, Jan 2026 – May 2026
-- Software Engineer, NextToIntern, Feb 2025 – Present — 150+ Lehigh students
 
 LEADERSHIP:
 - Head of CS Ambassadors (ChatCSE) — 100+ students connected with CS faculty

@@ -33,7 +33,7 @@ export const NODE_DEFS: NodeDef[] = [
   { id: 'center',     label: '',           color: '#e8552a', r: 82, tooltipDesc: 'SWE Intern · AI Researcher · Lehigh · 2028' },
   { id: 'research',   label: 'Research',   color: '#7ab8e8', r: 44, tooltipDesc: 'SWAT Lab · AIMES · Neurosymbolic AI' },
   { id: 'projects',   label: 'Projects',   color: '#a8d8a8', r: 44, tooltipDesc: '5 projects · AI · Distributed Systems' },
-  { id: 'experience', label: 'Experience', color: '#f0c674', r: 40, tooltipDesc: '5 roles · Industry + research + teaching' },
+  { id: 'experience', label: 'Experience', color: '#f0c674', r: 40, tooltipDesc: '4 roles · Industry + research + teaching' },
   { id: 'skills',     label: 'Skills',     color: '#c4a8d8', r: 38, tooltipDesc: 'Languages · AI/ML · Infra' },
   { id: 'leadership', label: 'Leadership', color: '#6ecfbf', r: 38, tooltipDesc: 'Campus roles · Orgs · Fellowships' },
   { id: 'contact',    label: 'Contact',    color: '#e8552a', r: 34, tooltipDesc: 'Open to 2027 internships' },
@@ -179,40 +179,32 @@ export const PANEL_DATA: Record<string, PanelData> = {
     title: 'Experience',
     subtitle: 'Research · Engineering · Building in production',
     rdf: `:Efua :workedAt :PrePass , :SWATLab , :WiNSLab ;
-  :taughtAt :CSE216 ;
-  :leads :NextToIntern .
+  :taughtAt :CSE216 .
 :PrePass :builtSystem :SafetyAlertEngine .
-:NextToIntern :users "150+ Lehigh students" .
 :SWATLab :advisor :ProfHeflin .`,
     items: [
       {
         name: 'Software Engineering Intern',
         meta: 'PrePass · June 2026 – September 2026',
-        desc: 'Built a Safety Alert Engine replacing a CPU-heavy legacy system with decoupled ETL and REST API layers. Ingests Colorado 511 road hazards every 5 min, indexing ~1,000 incidents into Elasticsearch via bulk batching. Shipped a 2-endpoint .NET 10 API serving category and geo-distance driver alerts under 100ms p95, with exponential-backoff retries, circuit breakers, and OpenTelemetry tracing exported to Datadog.',
-        tags: ['.NET 10', 'C#', 'Elasticsearch', 'REST APIs', 'OpenTelemetry', 'Datadog'],
+        desc: 'Worked on the backend and infrastructure for a real-time safety alert system that ingested Colorado road-hazard data and served it through low-latency APIs. Worked across ingestion, Elasticsearch, reliability, observability, and deployment, with the system designed around a sub-100ms p95 API target.',
+        tags: ['.NET', 'C#', 'Elasticsearch', 'Azure', 'OpenTelemetry', 'Datadog'],
       },
       {
         name: 'AI Researcher',
         meta: 'SWAT Lab · Lehigh University · April 2026 – Present',
-        desc: 'Neurosymbolic AI — integrating neural networks with backward-chaining reasoners to improve AI query efficiency on knowledge graphs. Implementing learned heuristics with OWL ontologies. Working toward AI that can actually explain itself.',
-        tags: ['Neurosymbolic AI', 'OWL', 'Knowledge Graphs', 'Python', 'PyTorch'],
+        desc: 'Researching neurosymbolic AI, with a focus on making neural models produce explanations that are easier to understand as logical rules. Building and testing models that connect learned representations with symbolic reasoning, with the broader goal of making AI systems more interpretable.',
+        tags: ['Neurosymbolic AI', 'PyTorch', 'Knowledge Graphs', 'Logic', 'Python'],
       },
       {
         name: 'SWE & ML Researcher',
-        meta: 'AIMES · WiNS Lab · Lehigh · May 2025 – Feb 2026',
-        desc: 'Designed and deployed a production LLM-powered clinical training simulator. Engineered prompt-conditioning middleware for culturally-adaptive AI. Reduced model hallucinations 35% via prompt engineering. Integrated IRB compliance guardrails. Presented at ABRCMS 2025.',
-        tags: ['LLMs', 'FastAPI', 'AWS', 'GPT-4 API', 'Prompt Engineering', 'Python'],
-      },
-      {
-        name: 'Software Engineer',
-        meta: 'NextToIntern · Feb 2025 – Present',
-        desc: 'Internship-prep platform used by 150+ Lehigh students to find mock-interview and recruiting partners. Built a hybrid matching pipeline combining rule-based filtering with LLM ranking by role, availability, and interview goals. Grew average session duration from 30 to 75 minutes through gamified matching, leaderboards, and product improvements.',
-        tags: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Redis', 'OpenAI API'],
+        meta: 'WiNS Lab · Lehigh University · May 2025 – Feb 2026',
+        desc: 'Worked on AIMES, a culturally adaptive AI platform for student support and counselor training. Helped build and evaluate the system, worked on the LLM behavior and application experience, and supported an IRB-approved user study. Later presented the research at ABRCMS 2025.',
+        tags: ['Next.js', 'Firebase', 'OpenAI API', 'LLMs', 'Python'],
       },
       {
         name: 'Teaching Assistant',
-        meta: 'Software Engineering, CSE 216 · Lehigh University · Jan 2026 – May 2026',
-        desc: 'Supported 64 students building The Buzz, a full-stack social media app, through labs, office hours, PR reviews, and grading. Debugged APIs, PostgreSQL queries, OAuth, CI/CD, and Dokku deployments to help teams unblock technical issues faster.',
+        meta: 'Lehigh University · CSE 216 · Jan 2026 – May 2026',
+        desc: 'Supported 64 students building and deploying The Buzz, a full-stack social media app, helping with debugging, code reviews, labs, and office hours. Worked with students on backend APIs, PostgreSQL, authentication, CI/CD, and deployment issues while also grading and reviewing project work.',
         tags: ['Teaching', 'PostgreSQL', 'OAuth', 'CI/CD', 'Dokku'],
       },
     ],
