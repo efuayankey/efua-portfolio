@@ -1,5 +1,5 @@
 'use client';
-import { PANEL_DATA } from '@/lib/nodes';
+import { PANEL_DATA, TaggedItem } from '@/lib/nodes';
 
 interface PanelProps {
   activeNode: string | null;
@@ -142,41 +142,50 @@ export default function Panel({ activeNode, onClose }: PanelProps) {
           )}
 
           {/* Tagged items */}
-          {data.items && (
-            <div style={{ marginBottom: '1.8rem' }}>
-              <div style={{ ...S.mono, fontSize: '0.5rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#e8552a', marginBottom: '0.7rem', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                {activeNode === 'projects' ? 'Projects' : activeNode === 'experience' ? 'Roles' : 'Work'}
-                <span style={{ width: 24, height: 1, background: 'rgba(232,85,42,0.4)', display: 'inline-block' }} />
+          {data.items && (() => {
+            const hasGroups = data.items.some(item => item.group);
+            const groupNames = hasGroups
+              ? Array.from(new Set(data.items.map(item => item.group ?? '')))
+              : [''];
+
+            const renderItem = (item: TaggedItem) => (
+              <div
+                key={item.name}
+                style={{ border: '1px solid #1e1e1e', padding: '1.1rem', transition: 'border-color 0.2s' }}
+                onMouseEnter={e => ((e.currentTarget as HTMLElement).style.borderColor = 'rgba(232,85,42,0.4)')}
+                onMouseLeave={e => ((e.currentTarget as HTMLElement).style.borderColor = '#1e1e1e')}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.15rem' }}>
+                  <div style={{ ...S.bebas, fontSize: '1.2rem', letterSpacing: '0.04em', color: '#fdf6e8' }}>{item.name}</div>
+                  {item.link && (
+                    <a href={item.link} target="_blank" rel="noopener noreferrer" style={{ ...S.mono, fontSize: '0.48rem', color: '#e8552a', textDecoration: 'none', cursor: 'none' }}>↗</a>
+                  )}
+                </div>
+                <div style={{ ...S.mono, fontSize: '0.5rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#e8552a', marginBottom: '0.4rem' }}>{item.meta}</div>
+                {item.hook && (
+                  <p style={{ ...S.serif, fontStyle: 'italic', fontSize: '0.85rem', color: '#fdf6e8', lineHeight: 1.5, marginBottom: '0.5rem' }}>{item.hook}</p>
+                )}
+                <p style={{ ...S.serif, fontSize: '0.75rem', color: 'rgba(253,246,232,0.4)', lineHeight: 1.65 }}>{item.desc}</p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginTop: '0.5rem' }}>
+                  {item.tags.map(t => (
+                    <span key={t} style={{ ...S.mono, fontSize: '0.48rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(253,246,232,0.12)', border: '1px solid #1e1e1e', padding: '0.18rem 0.5rem' }}>{t}</span>
+                  ))}
+                </div>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-                {data.items.map(item => (
-                  <div
-                    key={item.name}
-                    style={{ border: '1px solid #1e1e1e', padding: '1.1rem', transition: 'border-color 0.2s' }}
-                    onMouseEnter={e => ((e.currentTarget as HTMLElement).style.borderColor = 'rgba(232,85,42,0.4)')}
-                    onMouseLeave={e => ((e.currentTarget as HTMLElement).style.borderColor = '#1e1e1e')}
-                  >
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.15rem' }}>
-                      <div style={{ ...S.bebas, fontSize: '1.2rem', letterSpacing: '0.04em', color: '#fdf6e8' }}>{item.name}</div>
-                      {item.link && (
-                        <a href={item.link} target="_blank" rel="noopener noreferrer" style={{ ...S.mono, fontSize: '0.48rem', color: '#e8552a', textDecoration: 'none', cursor: 'none' }}>↗</a>
-                      )}
-                    </div>
-                    <div style={{ ...S.mono, fontSize: '0.5rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#e8552a', marginBottom: '0.4rem' }}>{item.meta}</div>
-                    {item.hook && (
-                      <p style={{ ...S.serif, fontStyle: 'italic', fontSize: '0.85rem', color: '#fdf6e8', lineHeight: 1.5, marginBottom: '0.5rem' }}>{item.hook}</p>
-                    )}
-                    <p style={{ ...S.serif, fontSize: '0.75rem', color: 'rgba(253,246,232,0.4)', lineHeight: 1.65 }}>{item.desc}</p>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginTop: '0.5rem' }}>
-                      {item.tags.map(t => (
-                        <span key={t} style={{ ...S.mono, fontSize: '0.48rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(253,246,232,0.12)', border: '1px solid #1e1e1e', padding: '0.18rem 0.5rem' }}>{t}</span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
+            );
+
+            return groupNames.map(groupName => (
+              <div key={groupName || 'ungrouped'} style={{ marginBottom: '1.8rem' }}>
+                <div style={{ ...S.mono, fontSize: '0.5rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#e8552a', marginBottom: '0.7rem', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                  {hasGroups ? groupName : (activeNode === 'projects' ? 'Projects' : activeNode === 'experience' ? 'Roles' : 'Work')}
+                  <span style={{ width: 24, height: 1, background: 'rgba(232,85,42,0.4)', display: 'inline-block' }} />
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
+                  {data.items!.filter(item => (hasGroups ? item.group === groupName : true)).map(renderItem)}
+                </div>
               </div>
-            </div>
-          )}
+            ));
+          })()}
 
           {/* Skill groups */}
           {data.skillGroups && (

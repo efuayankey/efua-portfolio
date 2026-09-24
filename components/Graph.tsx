@@ -382,7 +382,7 @@ export default function Graph({ onNodeHover, onNodeClick, activeNode, bootDone, 
         ctx.font = '300 11px "IBM Plex Mono", monospace';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'bottom';
-        ctx.fillText('"I build AI that reasons."', 32, h - 28);
+        ctx.fillText('"I build systems that reason, scale, and stay reliable."', 32, h - 28);
         ctx.restore();
       }
 

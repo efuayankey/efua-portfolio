@@ -13,6 +13,7 @@ export interface TaggedItem {
   desc: string;
   tags: string[];
   link?: string;
+  group?: string;
 }
 
 export interface PanelData {
@@ -237,37 +238,42 @@ export const PANEL_DATA: Record<string, PanelData> = {
   leadership: {
     eyebrow: ':leadership',
     title: 'Leadership',
-    subtitle: 'Campus roles · Fellowships · Community',
+    subtitle: 'Community, mentorship, and the things I\'ve taken responsibility for beyond class.',
     rdf: `:Efua :leads :CSAmbassadors ;
-  :manages "$8K budget" ;
-  :holds :RossinFellowship ,
-         :SoarWithUsFellowship .
-:CSAmbassadors :connects "100+ students" .
-:RossinFellowship :nominatedBy :Faculty , :Dean .`,
+  :servesAs :WiCSTreasurer ,
+             :RossinJuniorFellow ;
+  :advocatesFor :GenderEquity ;
+  :buildsCommunityThrough :Mentorship ,
+                          :StudentLeadership ,
+                          :EngineeringCommunity .`,
     items: [
       {
         name: 'Head of CS Ambassadors',
         meta: 'ChatCSE · Lehigh University',
-        desc: 'Leads the peer mentoring program connecting 100+ students with CS faculty. Organizes department events and represents CSE at Lehigh recruiting initiatives.',
+        group: 'Leadership roles',
+        desc: 'I lead a student ambassador group focused on making the CS department easier to navigate and more connected — whether that means helping newer students find their footing, organizing department events, or giving prospective students a more honest picture of what studying CS at Lehigh is actually like. The group now connects 100+ students with CS faculty.',
         tags: ['Mentorship', 'Community', 'Recruiting'],
       },
       {
         name: 'Treasurer — Women in CS',
         meta: 'WiCS · Lehigh University',
-        desc: 'Manages $8K annual budget, coordinates sponsorships, and oversees funding for 40+ member workshops and networking events.',
-        tags: ['Finance', 'Sponsorships', 'Events'],
+        group: 'Leadership roles',
+        desc: 'I manage the organization\'s budget and help make events actually happen — from funding workshops and networking events to coordinating sponsorships and keeping spending organized across the year. It\'s part finance, part logistics, and part making sure good ideas don\'t die because nobody figured out how to pay for them.',
+        tags: ['Budgeting', 'Sponsorships', 'Events'],
       },
       {
         name: 'Rossin Junior Fellow',
-        meta: 'Rossin College of Engineering · Lehigh',
-        desc: 'Nominated by the department chair, faculty, and RCEAS Dean. Communications & Marketing Chair. Not applied for — earned.',
-        tags: ['Fellowship', 'Engineering', 'Communications'],
+        meta: 'Rossin College of Engineering · Lehigh University',
+        group: 'Fellowships & community',
+        desc: 'Selected through faculty and college leadership nomination for Rossin\'s Junior Fellows program, a selective group of engineering students who represent and contribute to the college community. I serve as Communications & Marketing Chair, helping shape how the group shares its work, promotes initiatives and events, and connects with students across Rossin.',
+        tags: ['Leadership', 'Communications', 'Engineering', 'Community'],
       },
       {
         name: 'Soar With Us Fellow',
-        meta: 'Spring 2026 · "Who Leads at Lehigh?"',
-        desc: 'Gender representation research project. 53 survey respondents. Presented findings at April 2026 showcase.',
-        tags: ['Research', 'Gender Equity', 'Lehigh'],
+        meta: 'Lehigh University · Spring 2026',
+        group: 'Fellowships & community',
+        desc: 'Selected for the Soar With Us Fellowship, where I worked on "Who Leads at Lehigh?", a research and advocacy project focused on gender equity in student leadership. Our work examined how male-dominated ideas of leadership shape who gets seen, heard, and encouraged to lead on campus. I helped turn those findings into advocacy aimed at challenging those norms, shifting perspectives, and creating a more equitable picture of what leadership at Lehigh can look like, culminating in a presentation of our work to the campus community.',
+        tags: ['Advocacy', 'Gender Equity', 'Research', 'Campus Leadership'],
       },
     ],
     memberships: ['ColorStack', 'NSBE', 'RARE Scholar', 'AI-4ALL Ignite', 'WiCS', 'ISAB', 'Rewriting the Code'],

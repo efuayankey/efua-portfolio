@@ -32,11 +32,15 @@ EXPERIENCE:
 - Teaching Assistant, Software Engineering (CSE 216), Lehigh University, Jan 2026 – May 2026
 
 LEADERSHIP:
-- Head of CS Ambassadors (ChatCSE) — 100+ students connected with CS faculty
-- Treasurer, Women in CS (WiCS) — $8K annual budget
-- Rossin Junior Fellow — nominated by faculty and Dean
-- Soar With Us Fellow — "Who Leads at Lehigh?" gender representation research
-- Member: ColorStack, NSBE, RARE Scholar, AI-4ALL Ignite, ISAB, Rewriting the Code
+Leadership roles:
+- Head of CS Ambassadors (ChatCSE, Lehigh) — leads a student ambassador group making the CS department easier to navigate and more connected: helping newer students find their footing, organizing department events, giving prospective students an honest picture of studying CS at Lehigh. Connects 100+ students with CS faculty.
+- Treasurer, Women in CS (WiCS, Lehigh) — manages the org's budget and helps make events happen: funding workshops and networking events, coordinating sponsorships, keeping spending organized across the year.
+
+Fellowships & community:
+- Rossin Junior Fellow (Rossin College of Engineering, Lehigh) — selected through faculty/college leadership nomination for a selective group of engineering students who represent and contribute to the college community. Serves as Communications & Marketing Chair.
+- Soar With Us Fellow (Lehigh, Spring 2026) — worked on "Who Leads at Lehigh?", a research and advocacy project on gender equity in student leadership, examining how male-dominated ideas of leadership shape who gets seen/heard/encouraged to lead on campus. Presented findings to the campus community.
+
+Communities: ColorStack, NSBE, RARE Scholar, AI-4ALL Ignite, ISAB, Rewriting the Code
 
 SKILLS: Languages — Python, Java, C++, C#, TypeScript, JavaScript, SQL, HTML/CSS. Frameworks & Backend — .NET, FastAPI, Flask, Node.js, Next.js, React. Cloud & Infrastructure — AWS, Azure, Docker, Kubernetes, Terraform, GitHub Actions, CI/CD, Datadog, Git, Kafka, Linux. Databases — PostgreSQL, Redis, Elasticsearch, DynamoDB, Firebase. AI/ML — PyTorch, TensorFlow, scikit-learn, NumPy, Pandas, OpenAI API, Claude, Copilot.
 

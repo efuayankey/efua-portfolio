@@ -214,7 +214,7 @@ export default function MobileView() {
       {/* Footer */}
       <div style={{ padding: '2rem 1.5rem', textAlign: 'center' }}>
         <p style={{ ...S.mono, fontSize: '0.45rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(253,246,232,0.15)' }}>
-          "I build AI that reasons." · View desktop for the full experience
+          "I build systems that reason, scale, and stay reliable." · View desktop for the full experience
         </p>
       </div>
 
