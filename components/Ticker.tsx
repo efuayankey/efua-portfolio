@@ -2,11 +2,9 @@
 
 const ITEMS = [
   { star: true,  text: 'Efua Yankey' },
-  { star: false, text: 'CS + AI Researcher · Lehigh University · Class of 2028' },
-  { star: true,  text: 'Neurosymbolic AI · SWAT Lab · Prof. Jeff Heflin' },
-  { star: false, text: 'ABRCMS 2025 · IRB Research · 83% Cultural Alignment' },
-  { star: true,  text: 'HawkSearch · Agentathon 2026 · Claude API' },
-  { star: false, text: 'Rossin Junior Fellow · Open to 2027 Internships' },
+  { star: false, text: 'CS + Engineering · Lehigh University · Class of 2028' },
+  { star: true,  text: 'AI Researcher' },
+  { star: false, text: 'Software Engineer' },
 ];
 
 // Duplicate for seamless loop

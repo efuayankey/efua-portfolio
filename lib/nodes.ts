@@ -85,7 +85,7 @@ export const PANEL_DATA: Record<string, PanelData> = {
       { label: 'Email Me', href: 'mailto:efuayankey123@gmail.com', primary: true },
       { label: 'LinkedIn ↗', href: 'https://linkedin.com/in/efuayankey' },
       { label: 'GitHub ↗', href: 'https://github.com/efuayankey' },
-      { label: 'Resume ↗', href: 'https://docs.google.com/document/d/1-layYoHlzmarjr5rbgDIHdXKIbuEdIeDaFOY0hx88iM/edit?usp=sharing' },
+      { label: 'Instagram ↗', href: 'https://www.instagram.com/efua.yankey/' },
     ],
   },
 
