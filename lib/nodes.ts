@@ -9,6 +9,7 @@ export interface NodeDef {
 export interface TaggedItem {
   name: string;
   meta: string;
+  hook?: string;
   desc: string;
   tags: string[];
   link?: string;
@@ -31,7 +32,7 @@ export interface PanelData {
 export const NODE_DEFS: NodeDef[] = [
   { id: 'center',     label: '',           color: '#e8552a', r: 82, tooltipDesc: 'SWE Intern · AI Researcher · Lehigh · 2028' },
   { id: 'research',   label: 'Research',   color: '#7ab8e8', r: 44, tooltipDesc: 'SWAT Lab · AIMES · Neurosymbolic AI' },
-  { id: 'projects',   label: 'Projects',   color: '#a8d8a8', r: 44, tooltipDesc: '6 projects · AI · Full-Stack' },
+  { id: 'projects',   label: 'Projects',   color: '#a8d8a8', r: 44, tooltipDesc: '5 projects · AI · Distributed Systems' },
   { id: 'experience', label: 'Experience', color: '#f0c674', r: 40, tooltipDesc: '5 roles · Industry + research + teaching' },
   { id: 'skills',     label: 'Skills',     color: '#c4a8d8', r: 38, tooltipDesc: 'Languages · AI/ML · Infra' },
   { id: 'leadership', label: 'Leadership', color: '#6ecfbf', r: 38, tooltipDesc: 'Campus roles · Orgs · Fellowships' },
@@ -123,57 +124,49 @@ export const PANEL_DATA: Record<string, PanelData> = {
   projects: {
     eyebrow: ':projects',
     title: 'Projects',
-    subtitle: 'AI agents · Chrome extensions · Computer vision · Full-stack platforms',
-    rdf: `:Efua :built :HawkSearch , :UniMetric ,
-              :AURA , :FaceFit ,
-              :NextToIntern , :PulseGrid .
-:HawkSearch :uses :ClaudeAPI ;
-  :builtAt :Agentathon2026 ;
-  :won "Best Value (1st Place)" .
-:UniMetric :covers "10000+ records" .
-:AURA :uses :AWSBedrock , :ClaudeAPI .
-:PulseGrid :monitors "distributed infrastructure" .`,
+    subtitle: 'AI agents · Distributed systems · Full-stack platforms',
+    rdf: `:Efua :builds "from curiosity,
+               competitions, and
+               real problems" .`,
     items: [
       {
-        name: 'HawkSearch',
-        meta: 'Agentathon · Lehigh · April 2026 · Best Value, 1st Place',
-        desc: 'AI agent that scrapes all 5 Lehigh colleges\' faculty pages live, reasons over research profiles, scores student-professor compatibility, and drafts cold emails ready to send in one click. Claude API for reasoning and email generation. Won Best Value (1st Place).',
-        tags: ['Claude API', 'Next.js', 'AI Agents', 'Web Scraping', 'TypeScript'],
-        link: 'https://github.com/efuayankey',
-      },
-      {
-        name: 'PulseGrid',
-        meta: 'Distributed Infrastructure Monitoring · Team Project',
-        desc: 'Python agents stream CPU, memory, and logs every 5 sec into a FastAPI monitoring backend. Redis TTL heartbeats mark agents offline within 30 sec and serve cached live metrics. Historical metrics stored in PostgreSQL with threshold alerts and cooldown deduplication for incident visibility.',
-        tags: ['Python', 'FastAPI', 'PostgreSQL', 'Redis', 'Next.js', 'Docker'],
-      },
-      {
-        name: 'UniMetric',
-        meta: 'Chrome Extension · 10k+ professor records',
-        desc: 'Overlays RateMyProfessor ratings directly on Banner, Workday, and Canvas course registration pages. Jaro-Winkler fuzzy matching resolves name discrepancies across 10,000+ records. Redis-cached for fast overlay. GraphQL backend.',
-        tags: ['FastAPI', 'GraphQL', 'Redis', 'PostgreSQL', 'Chrome Ext.', 'Python'],
-        link: 'https://github.com/efuayankey/UniMetric',
-      },
-      {
-        name: 'AURA',
-        meta: 'AWS Bedrock · Full-Stack · AI Wellness',
-        desc: 'AI scheduling assistant tracking a Balance Score (mood + energy + workload). Uses AWS Bedrock with Claude API for intelligent task suggestions. DynamoDB for real-time persistence, SNS for smart wellness notifications. Deployed on AWS Amplify.',
-        tags: ['AWS Bedrock', 'Claude API', 'Next.js 15', 'TypeScript', 'DynamoDB', 'Amplify'],
-        link: 'https://github.com/efuayankey/aura',
-      },
-      {
-        name: 'FaceFit',
-        meta: 'Computer Vision · 90% user satisfaction',
-        desc: 'End-to-end CV pipeline for face shape classification and glasses recommendations. MediaPipe extracts 468 facial landmarks per frame. Custom geometric feature engineering feeds a supervised ML classifier. 30% accuracy improvement over baseline, 90% user satisfaction across 15+ testers.',
-        tags: ['MediaPipe', 'OpenCV', 'scikit-learn', 'TensorFlow', 'Python'],
-        link: 'https://github.com/efuayankey/FaceFit',
+        name: 'Dispatch',
+        meta: 'Distributed Task Processing Platform',
+        hook: 'Built around a simple problem: keeping an app responsive even when the work happening behind it gets heavy.',
+        desc: 'Dispatch moves long-running work out of the request path and onto distributed background workers, cutting API response time from 4.8s to 180ms. Queue-based autoscaling handles 1,200+ tasks/min through 10× traffic bursts, while retries, idempotency, dead-letter queues, and PostgreSQL-backed state keep jobs recoverable when things fail.',
+        tags: ['Python', 'Go', 'FastAPI', 'PostgreSQL', 'Redis', 'Azure Service Bus', 'Docker', 'Terraform'],
+        link: 'https://github.com/efuayankey/dispatch',
       },
       {
         name: 'NextToIntern',
-        meta: 'Feb 2025 – Present · 70+ active users · 99% uptime',
-        desc: 'Peer-matching platform for internship prep and recruiting at Lehigh. RESTful matching API with FastAPI + PostgreSQL hitting sub-50ms response times. CI/CD pipeline maintaining 99% uptime. Led a 3-person agile team through sprint planning and bi-weekly demos.',
-        tags: ['Next.js', 'React', 'FastAPI', 'PostgreSQL', 'Firebase', 'CI/CD'],
+        meta: 'Internship Prep & Matching Platform',
+        hook: 'Getting a mock interview shouldn\'t depend on knowing the right people.',
+        desc: 'Used by 150+ Lehigh students, this internship-prep platform helps them find mock-interview and recruiting partners based on what they\'re actually preparing for. A hybrid matching system combines rule-based filtering with LLM ranking across role, availability, and interview goals — with gamified matching and leaderboards built in to make consistent practice easier to stick with.',
+        tags: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Redis', 'OpenAI API', 'Docker'],
         link: 'https://github.com/efuayankey',
+      },
+      {
+        name: 'HawkSearch',
+        meta: 'AI Research-Matching Agent',
+        hook: 'Finding the right professor shouldn\'t mean digging through dozens of faculty pages.',
+        desc: 'Scans all 5 Lehigh colleges\' faculty pages live — no pre-loaded data, fetching and reasoning in real time. Claude API ranks student-professor fit on a 0–100 scale with reasoning, strengths, and gaps, then drafts a personalized email through Google OAuth and the Gmail API, ready to send in one click. Won Best Value, 1st Place at Lehigh\'s 2026 Agentathon.',
+        tags: ['Claude API', 'Next.js', 'Gmail API', 'AI Agents', 'Web Scraping', 'TypeScript'],
+        link: 'https://github.com/efuayankey',
+      },
+      {
+        name: 'NSMQ MasterQuiz',
+        meta: 'Gamified STEM Competition Prep Platform',
+        hook: 'Started as a way to keep practicing for the National Science & Maths Quiz outside team sessions — four years later, students at my former high school are still using it.',
+        desc: 'Timed rounds, live scoring, leaderboards, and progress tracking recreate the pace and pressure of real NSMQ competition rounds. Now in its 4th year of use, it\'s been iterated on repeatedly — question delivery, practice flows, and usability — based on direct feedback from multiple student cohorts.',
+        tags: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Redis', 'OpenAI API'],
+        link: 'https://github.com/efuayankey/nsmq-recruitment-app',
+      },
+      {
+        name: 'PulseGrid',
+        meta: 'Distributed Infrastructure Monitoring Platform',
+        hook: 'How do you tell a dead agent from one that\'s just slow to report in?',
+        desc: 'Built with a small team. Python agents stream CPU, memory, and logs every 5 sec into a FastAPI monitoring backend. Redis TTL heartbeats mark agents offline within 30 sec and serve cached live metrics, while PostgreSQL stores longer-term history with threshold alerts and cooldown deduplication. A Next.js dashboard surfaces all of it — healthy, delayed, or offline — at a glance.',
+        tags: ['Python', 'FastAPI', 'PostgreSQL', 'Redis', 'Next.js', 'Docker'],
       },
     ],
     links: [
@@ -189,9 +182,7 @@ export const PANEL_DATA: Record<string, PanelData> = {
   :taughtAt :CSE216 ;
   :leads :NextToIntern .
 :PrePass :builtSystem :SafetyAlertEngine .
-:NextToIntern :users "70+" ;
-  :uptime "99%" ;
-  :responseTime "sub-50ms" .
+:NextToIntern :users "150+ Lehigh students" .
 :SWATLab :advisor :ProfHeflin .`,
     items: [
       {
@@ -215,8 +206,8 @@ export const PANEL_DATA: Record<string, PanelData> = {
       {
         name: 'Software Engineer',
         meta: 'NextToIntern · Feb 2025 – Present',
-        desc: 'Full-stack platform for student internship prep matching. Architected RESTful API with FastAPI + PostgreSQL achieving sub-50ms response times. CI/CD pipeline with 99% uptime. Led 3-person agile team through sprint planning, PR reviews, and bi-weekly demos.',
-        tags: ['Next.js', 'FastAPI', 'PostgreSQL', 'Firebase', 'CI/CD', 'Agile'],
+        desc: 'Internship-prep platform used by 150+ Lehigh students to find mock-interview and recruiting partners. Built a hybrid matching pipeline combining rule-based filtering with LLM ranking by role, availability, and interview goals. Grew average session duration from 30 to 75 minutes through gamified matching, leaderboards, and product improvements.',
+        tags: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Redis', 'OpenAI API'],
       },
       {
         name: 'Teaching Assistant',

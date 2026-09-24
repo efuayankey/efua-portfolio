@@ -15,19 +15,18 @@ RESEARCH:
 - WiNS Lab — AIMES: IRB-approved LLM clinical training simulator. 83% of 30+ participants preferred culturally-conditioned AI. Presented at ABRCMS 2025.
 
 PROJECTS:
+- Dispatch: Distributed task processing platform. Cut API response time from 4.8s to 180ms by offloading long-running work to async workers. Sustains 1,200+ tasks/min through 10x traffic bursts via queue-based autoscaling (1-8 workers). Recovers 96% of transient failures automatically via retries, idempotency, dead-letter queues, and PostgreSQL state persistence.
+- NextToIntern: Internship-prep platform used by 150+ Lehigh students. Hybrid matching pipeline (rule-based filtering + LLM ranking) by role, availability, and interview goals. Gamified matching and leaderboards grew average session duration from 30 to 75 minutes.
 - HawkSearch: AI agent at Agentathon 2026 using Claude API. Scrapes Lehigh faculty pages, scores compatibility, drafts cold emails. Built in one night. Won Best Value (1st Place).
+- NSMQ MasterQuiz: Gamified STEM competition-prep platform, used by students at her former high school for 4+ years to prepare for the National Science & Maths Quiz (NSMQ). Timed rounds, scoring, leaderboards, and progress tracking. Iterated on question delivery and practice flows using student feedback.
 - PulseGrid: Distributed infrastructure monitoring platform. Python agents stream CPU/memory/logs into a FastAPI backend, Redis TTL heartbeats, PostgreSQL for historical metrics and threshold alerts.
-- UniMetric: Chrome extension overlaying RateMyProfessor data on Banner/Workday/Canvas. 10k+ professor records, Jaro-Winkler fuzzy matching, Redis + GraphQL.
-- AURA: AI wellness scheduling assistant using AWS Bedrock + Claude API. Balance Score (mood, energy, workload). Next.js 15 + DynamoDB.
-- FaceFit: CV pipeline — MediaPipe + OpenCV + scikit-learn. 30% accuracy improvement, 90% user satisfaction.
-- NextToIntern: Peer-matching platform. 70+ active users, sub-50ms API, 99% uptime, led 3-person team.
 
 EXPERIENCE:
 - Software Engineering Intern, PrePass, June 2026 – Present — built a Safety Alert Engine (decoupled ETL + REST API, Elasticsearch, .NET 10, OpenTelemetry/Datadog)
 - AI Researcher, SWAT Lab, April 2026 – Present
 - SWE & ML Researcher, AIMES/WiNS Lab, May 2025 – Feb 2026
 - Teaching Assistant, Software Engineering (CSE 216), Lehigh University, Jan 2026 – May 2026
-- Software Engineer, NextToIntern, Feb 2025 – Present
+- Software Engineer, NextToIntern, Feb 2025 – Present — 150+ Lehigh students
 
 LEADERSHIP:
 - Head of CS Ambassadors (ChatCSE) — 100+ students connected with CS faculty

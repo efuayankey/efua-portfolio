@@ -161,6 +161,9 @@ export default function Panel({ activeNode, onClose }: PanelProps) {
                       )}
                     </div>
                     <div style={{ ...S.mono, fontSize: '0.5rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#e8552a', marginBottom: '0.4rem' }}>{item.meta}</div>
+                    {item.hook && (
+                      <p style={{ ...S.serif, fontStyle: 'italic', fontSize: '0.85rem', color: '#fdf6e8', lineHeight: 1.5, marginBottom: '0.5rem' }}>{item.hook}</p>
+                    )}
                     <p style={{ ...S.serif, fontSize: '0.75rem', color: 'rgba(253,246,232,0.4)', lineHeight: 1.65 }}>{item.desc}</p>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginTop: '0.5rem' }}>
                       {item.tags.map(t => (
