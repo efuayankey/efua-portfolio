@@ -206,26 +206,30 @@ export const PANEL_DATA: Record<string, PanelData> = {
   skills: {
     eyebrow: ':skills',
     title: 'Skills',
-    subtitle: 'Languages · AI/ML · Frameworks · Infrastructure',
+    subtitle: 'Languages · Backend · Cloud & Infra · Databases · AI/ML',
     rdf: `:Efua :knows :Python , :PyTorch ,
-              :ClaudeAPI , :NextJS ,
+              :Claude , :NextJS ,
               :AWS , :TypeScript .`,
     skillGroups: [
       {
         category: 'Languages',
-        skills: ['Python', 'TypeScript', 'JavaScript', 'Java', 'C++', 'C#', 'SQL', 'HTML/CSS'],
+        skills: ['Python', 'Java', 'C++', 'C#', 'TypeScript', 'JavaScript', 'SQL', 'HTML/CSS'],
+      },
+      {
+        category: 'Frameworks & Backend',
+        skills: ['.NET', 'FastAPI', 'Flask', 'Node.js', 'Next.js', 'React'],
+      },
+      {
+        category: 'Cloud & Infrastructure',
+        skills: ['AWS', 'Azure', 'Docker', 'Kubernetes', 'Terraform', 'GitHub Actions', 'CI/CD', 'Datadog', 'Git', 'Kafka', 'Linux'],
+      },
+      {
+        category: 'Databases',
+        skills: ['PostgreSQL', 'Redis', 'Elasticsearch', 'DynamoDB', 'Firebase'],
       },
       {
         category: 'AI / ML',
-        skills: ['PyTorch', 'TensorFlow', 'scikit-learn', 'OpenCV', 'MediaPipe', 'GPT-4 API', 'Claude API', 'RAG', 'Prompt Engineering', 'NumPy', 'Pandas', 'PyTorch Geometric'],
-      },
-      {
-        category: 'Frameworks',
-        skills: ['Next.js', 'React', 'FastAPI', 'Flask', 'Node.js', '.NET', 'Express', 'Spring Boot', 'Firebase', 'GraphQL', 'Bun'],
-      },
-      {
-        category: 'Infrastructure',
-        skills: ['AWS', 'Azure', 'Docker', 'Kubernetes', 'PostgreSQL', 'Redis', 'Elasticsearch', 'DynamoDB', 'Kafka', 'CI/CD', 'GitHub Actions', 'Git', 'Linux'],
+        skills: ['PyTorch', 'TensorFlow', 'scikit-learn', 'NumPy', 'Pandas', 'OpenAI API', 'Claude', 'Copilot'],
       },
     ],
   },

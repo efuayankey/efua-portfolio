@@ -34,7 +34,7 @@ LEADERSHIP:
 - Soar With Us Fellow — "Who Leads at Lehigh?" gender representation research
 - Member: ColorStack, NSBE, RARE Scholar, AI-4ALL Ignite, ISAB, Rewriting the Code
 
-SKILLS: Python, TypeScript, JavaScript, Java, C++, C#, SQL. PyTorch, TensorFlow, scikit-learn, OpenCV, GPT-4 API, Claude API, RAG. Next.js, React, FastAPI, Flask, Node.js, .NET, Firebase, GraphQL, Bun. AWS, Azure, Docker, Kubernetes, PostgreSQL, Redis, Elasticsearch, DynamoDB, CI/CD, GitHub Actions, Kafka.
+SKILLS: Languages — Python, Java, C++, C#, TypeScript, JavaScript, SQL, HTML/CSS. Frameworks & Backend — .NET, FastAPI, Flask, Node.js, Next.js, React. Cloud & Infrastructure — AWS, Azure, Docker, Kubernetes, Terraform, GitHub Actions, CI/CD, Datadog, Git, Kafka, Linux. Databases — PostgreSQL, Redis, Elasticsearch, DynamoDB, Firebase. AI/ML — PyTorch, TensorFlow, scikit-learn, NumPy, Pandas, OpenAI API, Claude, Copilot.
 
 AVAILABILITY: Actively recruiting for Summer 2027. Interested in software engineering opportunities, especially backend systems, infrastructure, distributed systems, and AI. Also open to talking about interesting problems, research, projects, or potential collaborations.
 
