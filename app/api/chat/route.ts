@@ -11,8 +11,8 @@ ABOUT EFUA:
 - LinkedIn: linkedin.com/in/efuayankey | GitHub: github.com/efuayankey | Instagram: instagram.com/efua.yankey
 
 RESEARCH:
-- SWAT Lab, Lehigh — Neurosymbolic AI under Prof. Jeff Heflin (pioneer of OWL standard used by Google and Amazon). Integrating neural networks with backward-chaining reasoners, knowledge graph reasoning.
-- WiNS Lab — AIMES: IRB-approved LLM clinical training simulator. 83% of 30+ participants preferred culturally-conditioned AI. Presented at ABRCMS 2025.
+- SWAT Lab, Lehigh, advised by Dr. Jeff Heflin (April 2026 – Present) — Neurosymbolic AI. Research question: how can neural models produce explanations expressible as understandable logical rules? Building neural explainers for first-order logic systems — models that learn representations of logical atoms and recover the rules behind a model's predictions, aiming to make neural reasoning easier to inspect and understand.
+- AIMES, WiNS Lab, Lehigh, advised by Dr. Mooi Choo Chuah (May 2025 – Feb 2026) — culturally adaptive AI platform for student support and counselor training. Research question: can an AI system adapt to a user's cultural context without losing usefulness or safety? Helped build and evaluate the system through an IRB-approved study; presented the research at ABRCMS 2025.
 
 PROJECTS:
 - Dispatch: Distributed task processing platform. Cut API response time from 4.8s to 180ms by offloading long-running work to async workers. Sustains 1,200+ tasks/min through 10x traffic bursts via queue-based autoscaling (1-8 workers). Recovers 96% of transient failures automatically via retries, idempotency, dead-letter queues, and PostgreSQL state persistence.

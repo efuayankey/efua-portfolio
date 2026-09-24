@@ -92,31 +92,24 @@ export const PANEL_DATA: Record<string, PanelData> = {
   research: {
     eyebrow: ':research',
     title: 'Research',
-    subtitle: 'Neurosymbolic AI · Large Language Models · Graph Neural Networks',
-    rdf: `:Efua :researchesAt :SWATLab ;
-  :presentedAt :ABRCMS2025 .
-:SWATLab :focus :NeurosymbolicAI .
-:NeurosymbolicAI :combines :NeuralNetworks ,
-                            :SymbolicReasoning .
-:ProfHeflin :pioneered :OWLStandard .
-:OWLStandard :usedBy :Google , :Amazon .`,
-    stats: [
-      { value: '83%', label: 'cultural alignment (AIMES)' },
-      { value: '30+', label: 'IRB participants' },
-      { value: 'OWL', label: 'Google & Amazon standard' },
-    ],
+    subtitle: 'Exploring how AI systems learn, reason, and explain what they\'re doing.',
+    rdf: `:Efua :researches "how AI systems
+                    learn, reason, and
+                    explain themselves" .`,
     items: [
       {
         name: 'SWAT Lab — Neurosymbolic AI',
-        meta: 'April 2026 – Present · Prof. Jeff Heflin',
-        desc: 'Neural networks + backward-chaining reasoners + OWL ontologies. Reducing knowledge graph search nodes by an order of magnitude. Under the person who wrote the W3C standard Google and Amazon run on.',
-        tags: ['Neurosymbolic AI', 'OWL Ontologies', 'Knowledge Graphs', 'Backward Chaining', 'Python'],
+        meta: 'April 2026 – Present · Dr. Jeff Heflin',
+        hook: 'How can neural models produce explanations that can be expressed as understandable logical rules?',
+        desc: 'My work explores neural explainers for first-order logic systems. I\'ve been building models that learn representations of logical atoms and recover the rules behind a model\'s predictions, with the broader goal of making neural reasoning easier to inspect and understand.',
+        tags: ['Neurosymbolic AI', 'PyTorch', 'First-Order Logic', 'Knowledge Graphs'],
       },
       {
         name: 'AIMES — WiNS Lab',
-        meta: 'May 2025 – Feb 2026 · IRB Approved · ABRCMS 2025',
-        desc: 'Production LLM simulator for cultural competency training in clinical AI. 12 cultural profiles, GPT-4 fine-tuned with prompt-conditioning middleware. 83% of 30+ IRB participants preferred the culturally-conditioned model. Presented findings at ABRCMS 2025.',
-        tags: ['LLMs', 'GPT-4', 'Cultural AI', 'FastAPI', 'AWS', 'IRB Research'],
+        meta: 'May 2025 – Feb 2026 · Dr. Mooi Choo Chuah',
+        hook: 'Can an AI system adapt its responses to a user\'s cultural context without losing usefulness or safety?',
+        desc: 'I worked on AIMES, a culturally adaptive AI platform for student support and counselor training. I helped build and evaluate the system through an IRB-approved study, worked on how the model generated culturally conditioned responses, and presented the research at ABRCMS 2025.',
+        tags: ['LLMs', 'Human-AI Interaction', 'Cultural AI', 'IRB Research'],
       },
     ],
   },
