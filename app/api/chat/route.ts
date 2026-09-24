@@ -21,6 +21,10 @@ PROJECTS:
 - NSMQ MasterQuiz: Gamified STEM competition-prep platform, used by students at her former high school for 4+ years to prepare for the National Science & Maths Quiz (NSMQ). Timed rounds, scoring, leaderboards, and progress tracking. Iterated on question delivery and practice flows using student feedback.
 - PulseGrid: Distributed infrastructure monitoring platform. Python agents stream CPU/memory/logs into a FastAPI backend, Redis TTL heartbeats, PostgreSQL for historical metrics and threshold alerts.
 
+HACKATHONS:
+- HawkSearch — Lehigh Agentathon, April 2026. Won Best Value (1st Place). See PROJECTS for detail.
+- AURA — Lehigh Valley CSB Hackathon (with Amazon), team project. AI wellness/productivity assistant: AWS Bedrock generates daily schedules around a user's tasks, mood, and energy; DynamoDB keeps tasks in sync; Amazon SNS powers wellness reminders; built a Balance Score metric to track productivity vs. wellbeing.
+
 EXPERIENCE:
 - Software Engineering Intern, PrePass, June 2026 – September 2026 (completed) — backend/infrastructure for a real-time safety alert system ingesting Colorado road-hazard data, served via low-latency APIs (sub-100ms p95 target). Worked across ingestion, Elasticsearch, reliability, observability, and deployment.
 - AI Researcher, SWAT Lab, April 2026 – Present — researching neurosymbolic AI, focused on making neural models produce explanations as logical rules; building and testing models that connect learned representations with symbolic reasoning for more interpretable AI.

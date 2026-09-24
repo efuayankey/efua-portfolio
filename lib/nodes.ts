@@ -34,12 +34,12 @@ export const NODE_DEFS: NodeDef[] = [
   { id: 'research',   label: 'Research',   color: '#7ab8e8', r: 44, tooltipDesc: 'SWAT Lab · AIMES · Neurosymbolic AI' },
   { id: 'projects',   label: 'Projects',   color: '#a8d8a8', r: 44, tooltipDesc: '5 projects · AI · Distributed Systems' },
   { id: 'experience', label: 'Experience', color: '#f0c674', r: 40, tooltipDesc: '4 roles · Industry + research + teaching' },
-  { id: 'skills',     label: 'Skills',     color: '#c4a8d8', r: 38, tooltipDesc: 'Languages · AI/ML · Infra' },
+  { id: 'skills',     label: 'Skills',     color: '#c4a8d8', r: 38, tooltipDesc: 'Languages · Backend · Cloud · AI/ML' },
   { id: 'leadership', label: 'Leadership', color: '#6ecfbf', r: 38, tooltipDesc: 'Campus roles · Orgs · Fellowships' },
   { id: 'contact',    label: 'Contact',    color: '#e8552a', r: 34, tooltipDesc: 'Backend · Infra · Distributed Systems · AI' },
   { id: 'ask',        label: 'Ask',        color: '#e8552a', r: 30, tooltipDesc: 'Chat with AI Efua' },
   { id: 'resume',     label: 'Resume',     color: '#e8552a', r: 26, tooltipDesc: 'Request access to full resume →' },
-  { id: 'hackathons', label: 'Hacks',      color: '#f4845f', r: 40, tooltipDesc: 'Agentathon · Claude API · one night builds' },
+  { id: 'hackathons', label: 'Hacks',      color: '#f4845f', r: 40, tooltipDesc: '2 builds · Agentathon · CSB Hackathon' },
 ];
 
 export const EDGES: [string, string][] = [
@@ -144,7 +144,7 @@ export const PANEL_DATA: Record<string, PanelData> = {
         hook: 'Finding the right professor shouldn\'t mean digging through dozens of faculty pages.',
         desc: 'Scans all 5 Lehigh colleges\' faculty pages live — no pre-loaded data, fetching and reasoning in real time. Claude API ranks student-professor fit on a 0–100 scale with reasoning, strengths, and gaps, then drafts a personalized email through Google OAuth and the Gmail API, ready to send in one click. Won Best Value, 1st Place at Lehigh\'s 2026 Agentathon.',
         tags: ['Claude API', 'Next.js', 'Gmail API', 'AI Agents', 'Web Scraping', 'TypeScript'],
-        link: 'https://github.com/efuayankey',
+        link: 'https://github.com/efuayankey/hawksearch',
       },
       {
         name: 'NSMQ MasterQuiz',
@@ -277,33 +277,31 @@ export const PANEL_DATA: Record<string, PanelData> = {
     eyebrow: ':hackathons',
     title: 'Hackathons',
     subtitle: 'Fast builds · Real stakes · Ship or go home',
-    rdf: `:Efua :competed :Agentathon2026 .
-:Agentathon2026 :hostedBy :LehighUniversity ;
-  :date "April 2026" ;
-  :result :HawkSearch .
-:HawkSearch :builtIn "one night" ;
-  :uses :ClaudeAPI ;
-  :does "faculty matching + cold email drafting" ;
-  :won "Best Value (1st Place)" .`,
-    stats: [
-      { value: '1st', label: 'place · Best Value' },
-      { value: '1', label: 'night to ship' },
-      { value: '5', label: 'colleges scraped live' },
-      { value: '1-click', label: 'cold email to prof' },
-    ],
+    rdf: `:Efua :competed "under hackathon
+                    constraints — fast
+                    builds, real stakes" .`,
     items: [
       {
         name: 'HawkSearch',
-        meta: 'Agentathon · Lehigh University · April 2026 · Best Value, 1st Place',
-        desc: 'Built overnight at Lehigh\'s first AI agent hackathon. Scrapes all 5 college faculty pages live, reasons over research profiles using Claude API, scores student-professor fit, and drafts a personalized cold email ready to send in one click. No pre-loaded data — it fetches and reasons in real time. Won Best Value (1st Place).',
-        tags: ['Claude API', 'Next.js', 'AI Agents', 'Web Scraping', 'TypeScript'],
-        link: 'https://github.com/efuayankey',
+        meta: 'Lehigh Agentathon · April 2026 · Best Value, 1st Place',
+        hook: 'Finding the right professor shouldn\'t mean digging through dozens of faculty pages.',
+        desc: 'Built overnight at Lehigh\'s first AI agent hackathon. Scans all 5 Lehigh colleges\' faculty pages live — no pre-loaded data, fetching and reasoning in real time. Claude API ranks student-professor fit on a 0–100 scale with reasoning, strengths, and gaps, then drafts a personalized email through Google OAuth and the Gmail API, ready to send in one click.',
+        tags: ['Claude API', 'Next.js', 'Gmail API', 'AI Agents', 'Web Scraping', 'TypeScript'],
+        link: 'https://github.com/efuayankey/hawksearch',
+      },
+      {
+        name: 'AURA',
+        meta: 'Lehigh Valley CSB Hackathon · Amazon · Team Project',
+        hook: 'What if your schedule accounted for how you actually felt, not just everything you needed to get done?',
+        desc: 'Creates daily schedules around a user\'s tasks, mood, and energy using AWS Bedrock, while DynamoDB keeps tasks in sync and Amazon SNS powers wellness reminders. Built a Balance Score metric to help users see how well they were balancing productivity and wellbeing.',
+        tags: ['Next.js', 'TypeScript', 'AWS Bedrock', 'DynamoDB', 'Amazon SNS', 'Amplify'],
+        link: 'https://github.com/efuayankey/aura',
       },
     ],
     sections: [
       {
         label: 'The approach',
-        text: 'Hackathons aren\'t about polish — they\'re about identifying the sharpest version of a problem and shipping something real before the clock runs out. HawkSearch solved something every Lehigh student actually needs: getting in front of professors for research. One night, one agent, one working demo.',
+        text: 'Hackathons aren\'t about polish — they\'re about identifying the sharpest version of a problem and shipping something real before the clock runs out. HawkSearch solved something every Lehigh student actually needs: getting in front of professors for research. AURA rethought how a schedule could account for how someone actually feels, not just what\'s on their to-do list. One night or one weekend, whatever the constraint — ship something real.',
       },
     ],
     links: [
