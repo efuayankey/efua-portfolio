@@ -231,7 +231,7 @@ export const PANEL_DATA: Record<string, PanelData> = {
       },
       {
         category: 'Databases',
-        skills: ['PostgreSQL', 'Redis', 'Elasticsearch', 'DynamoDB', 'Firebase'],
+        skills: ['PostgreSQL', 'Redis', 'Elasticsearch', 'DynamoDB', 'MongoDB', 'Firebase'],
       },
       {
         category: 'AI / ML',

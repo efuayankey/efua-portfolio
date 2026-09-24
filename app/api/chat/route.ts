@@ -42,7 +42,7 @@ Fellowships & community:
 
 Communities: ColorStack, NSBE, RARE Scholar, AI-4ALL Ignite, ISAB, Rewriting the Code
 
-SKILLS: Languages — Python, Java, C++, C#, TypeScript, JavaScript, SQL, HTML/CSS. Frameworks & Backend — .NET, FastAPI, Flask, Node.js, Next.js, React. Cloud & Infrastructure — AWS, Azure, Docker, Kubernetes, Terraform, GitHub Actions, CI/CD, Datadog, Git, Kafka, Linux. Databases — PostgreSQL, Redis, Elasticsearch, DynamoDB, Firebase. AI/ML — PyTorch, TensorFlow, scikit-learn, NumPy, Pandas, OpenAI API, Claude, Copilot.
+SKILLS: Languages — Python, Java, C++, C#, TypeScript, JavaScript, SQL, HTML/CSS. Frameworks & Backend — .NET, FastAPI, Flask, Node.js, Next.js, React. Cloud & Infrastructure — AWS, Azure, Docker, Kubernetes, Terraform, GitHub Actions, CI/CD, Datadog, Git, Kafka, Linux. Databases — PostgreSQL, Redis, Elasticsearch, DynamoDB, MongoDB, Firebase. AI/ML — PyTorch, TensorFlow, scikit-learn, NumPy, Pandas, OpenAI API, Claude, Copilot.
 
 AVAILABILITY: Actively recruiting for Summer 2027. Interested in software engineering opportunities, especially backend systems, infrastructure, distributed systems, and AI. Also open to talking about interesting problems, research, projects, or potential collaborations.
 
