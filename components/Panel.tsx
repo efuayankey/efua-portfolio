@@ -70,6 +70,18 @@ const S = {
 export default function Panel({ activeNode, onClose }: PanelProps) {
   const data = activeNode ? PANEL_DATA[activeNode] : null;
   const open = Boolean(data);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+
+  const handleEmailClick = (href: string) => {
+    const email = href.replace('mailto:', '');
+    try {
+      navigator.clipboard?.writeText(email);
+      setCopiedEmail(true);
+      setTimeout(() => setCopiedEmail(false), 1800);
+    } catch {
+      // clipboard unavailable — mailto link still fires normally
+    }
+  };
 
   let stagger = 0;
   const reveal = (): React.CSSProperties => ({
@@ -260,35 +272,39 @@ export default function Panel({ activeNode, onClose }: PanelProps) {
           {/* Links */}
           {data.links && (
             <div style={{ display: 'flex', gap: '0.7rem', flexWrap: 'wrap', marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid #1e1e1e', ...reveal() }}>
-              {data.links.map(link => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target={link.href.startsWith('mailto') ? undefined : '_blank'}
-                  rel="noopener noreferrer"
-                  style={{
-                    ...S.mono,
-                    fontSize: '0.55rem', letterSpacing: '0.14em', textTransform: 'uppercase',
-                    padding: '0.6rem 1.1rem', textDecoration: 'none', cursor: 'none',
-                    transition: 'all 0.2s', display: 'inline-block',
-                    background: link.primary ? '#e8552a' : 'none',
-                    color: link.primary ? 'white' : 'rgba(253,246,232,0.4)',
-                    border: link.primary ? '1px solid #e8552a' : '1px solid #1e1e1e',
-                  }}
-                  onMouseEnter={e => {
-                    const el = e.currentTarget as HTMLElement;
-                    if (link.primary) { el.style.background = 'transparent'; el.style.color = '#e8552a'; }
-                    else { el.style.color = '#fdf6e8'; el.style.borderColor = '#fdf6e8'; }
-                  }}
-                  onMouseLeave={e => {
-                    const el = e.currentTarget as HTMLElement;
-                    if (link.primary) { el.style.background = '#e8552a'; el.style.color = 'white'; }
-                    else { el.style.color = 'rgba(253,246,232,0.4)'; el.style.borderColor = '#1e1e1e'; }
-                  }}
-                >
-                  {link.label}
-                </a>
-              ))}
+              {data.links.map(link => {
+                const isMailto = link.href.startsWith('mailto');
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target={isMailto ? undefined : '_blank'}
+                    rel="noopener noreferrer"
+                    onClick={isMailto ? () => handleEmailClick(link.href) : undefined}
+                    style={{
+                      ...S.mono,
+                      fontSize: '0.55rem', letterSpacing: '0.14em', textTransform: 'uppercase',
+                      padding: '0.6rem 1.1rem', textDecoration: 'none', cursor: 'none',
+                      transition: 'all 0.2s', display: 'inline-block',
+                      background: link.primary ? '#e8552a' : 'none',
+                      color: link.primary ? 'white' : 'rgba(253,246,232,0.4)',
+                      border: link.primary ? '1px solid #e8552a' : '1px solid #1e1e1e',
+                    }}
+                    onMouseEnter={e => {
+                      const el = e.currentTarget as HTMLElement;
+                      if (link.primary) { el.style.background = 'transparent'; el.style.color = '#e8552a'; }
+                      else { el.style.color = '#fdf6e8'; el.style.borderColor = '#fdf6e8'; }
+                    }}
+                    onMouseLeave={e => {
+                      const el = e.currentTarget as HTMLElement;
+                      if (link.primary) { el.style.background = '#e8552a'; el.style.color = 'white'; }
+                      else { el.style.color = 'rgba(253,246,232,0.4)'; el.style.borderColor = '#1e1e1e'; }
+                    }}
+                  >
+                    {isMailto && copiedEmail ? '✓ Copied Email' : link.label}
+                  </a>
+                );
+              })}
             </div>
           )}
         </div>
